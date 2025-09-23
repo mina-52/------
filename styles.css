@@ -5,22 +5,30 @@
     box-sizing: border-box;
 }
 
-/* 基本設定 */
+/* 基本設定 - ハワイテーマ */
 :root {
     --primary-color: #FF6B35;
-    --secondary-color: #004E89;
+    --secondary-color: #00A8CC;
     --accent-color: #FFD23F;
+    --hibiscus-pink: #FF69B4;
+    --ocean-blue: #0077BE;
+    --sunset-orange: #FF8C42;
+    --palm-green: #228B22;
+    --sand-beige: #F5E6D3;
+    --coral-red: #FF7F7F;
     --text-dark: #2C3E50;
     --text-light: #7F8C8D;
-    --background-light: #F8F9FA;
+    --background-light: #FFF8F0;
     --white: #FFFFFF;
-    --gradient-primary: linear-gradient(135deg, #FF6B35 0%, #FF8E53 100%);
-    --gradient-secondary: linear-gradient(135deg, #004E89 0%, #0066CC 100%);
-    --gradient-ocean: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-primary: linear-gradient(135deg, #FF6B35 0%, #FF8C42 50%, #FFD23F 100%);
+    --gradient-secondary: linear-gradient(135deg, #00A8CC 0%, #0077BE 100%);
+    --gradient-ocean: linear-gradient(135deg, #00A8CC 0%, #0077BE 50%, #228B22 100%);
+    --gradient-sunset: linear-gradient(135deg, #FF6B35 0%, #FF69B4 50%, #FFD23F 100%);
+    --gradient-tropical: linear-gradient(45deg, #FF6B35, #FF69B4, #00A8CC, #228B22);
     --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
     --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.15);
     --shadow-heavy: 0 8px 30px rgba(0, 0, 0, 0.2);
-    --border-radius: 12px;
+    --border-radius: 15px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -28,8 +36,42 @@ body {
     font-family: 'Noto Sans JP', sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
-    background-color: var(--white);
+    background: var(--background-light);
     overflow-x: hidden;
+    position: relative;
+}
+
+/* ハワイらしいフォントスタイル */
+.brand-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8rem;
+    background: var(--gradient-sunset);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hawaii-text {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+}
+
+/* ハワイの背景パターン */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 168, 204, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 105, 180, 0.05) 0%, transparent 50%);
+    z-index: -1;
+    pointer-events: none;
 }
 
 .container {
@@ -121,7 +163,7 @@ body {
     transition: var(--transition);
 }
 
-/* メインビジュアル */
+/* メインビジュアル - ハワイテーマ */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -139,14 +181,38 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>');
-    opacity: 0.3;
+    background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>'),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,50 Q25,25 50,50 T100,50 L100,100 L0,100 Z" fill="%23ffffff" opacity="0.1"/></svg>') repeat-x bottom;
+    opacity: 0.4;
+    animation: wave 20s ease-in-out infinite;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 20%, rgba(255, 107, 53, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(255, 105, 180, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 212, 63, 0.1) 0%, transparent 50%);
+    z-index: 1;
+}
+
+@keyframes wave {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    25% { transform: translateX(-10px) translateY(-5px); }
+    50% { transform: translateX(0) translateY(-10px); }
+    75% { transform: translateX(10px) translateY(-5px); }
 }
 
 .hero-content {
     flex: 1;
     max-width: 600px;
-    z-index: 2;
+    z-index: 3;
     position: relative;
     padding: 0 2rem;
 }
@@ -160,10 +226,11 @@ body {
 }
 
 .highlight {
-    background: var(--gradient-primary);
+    background: var(--gradient-sunset);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-shadow: 0 0 30px rgba(255, 107, 53, 0.5);
 }
 
 .hero-subtitle {
@@ -244,57 +311,126 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 3;
 }
 
 .floating-elements {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
 }
 
 .floating-element {
     position: absolute;
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.2);
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--white);
-    animation: float 6s ease-in-out infinite;
+    animation: float 8s ease-in-out infinite;
     animation-delay: var(--delay);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .floating-element:nth-child(1) {
-    top: 20%;
-    left: 20%;
+    top: 15%;
+    left: 15%;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), rgba(255, 140, 66, 0.3));
 }
 
 .floating-element:nth-child(2) {
-    top: 60%;
-    right: 20%;
+    top: 55%;
+    right: 15%;
+    background: linear-gradient(135deg, rgba(0, 168, 204, 0.3), rgba(0, 119, 190, 0.3));
 }
 
 .floating-element:nth-child(3) {
-    bottom: 20%;
-    left: 50%;
+    bottom: 15%;
+    left: 45%;
+    background: linear-gradient(135deg, rgba(255, 105, 180, 0.3), rgba(255, 212, 63, 0.3));
+}
+
+/* ハワイの花の装飾要素を追加 */
+.floating-elements::before {
+    content: '🌺';
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    font-size: 3rem;
+    animation: hibiscus 6s ease-in-out infinite;
+    z-index: 1;
+}
+
+.floating-elements::after {
+    content: '🌴';
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    font-size: 4rem;
+    animation: palm 10s ease-in-out infinite;
+    z-index: 1;
 }
 
 @keyframes float {
     0%, 100% {
-        transform: translateY(0px) rotate(0deg);
+        transform: translateY(0px) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translateY(-15px) rotate(90deg) scale(1.1);
     }
     50% {
-        transform: translateY(-20px) rotate(180deg);
+        transform: translateY(-25px) rotate(180deg) scale(1.2);
+    }
+    75% {
+        transform: translateY(-15px) rotate(270deg) scale(1.1);
     }
 }
 
-/* ターゲット層セクション */
+@keyframes hibiscus {
+    0%, 100% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(10deg) scale(1.1);
+    }
+}
+
+@keyframes palm {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(2deg);
+    }
+    75% {
+        transform: rotate(-2deg);
+    }
+}
+
+/* ターゲット層セクション - ハワイテーマ */
 .target-section {
     padding: 5rem 0;
-    background: var(--background-light);
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--sand-beige) 100%);
+    position: relative;
+}
+
+.target-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23FF6B35" opacity="0.1"/><circle cx="80" cy="30" r="1.5" fill="%23FF69B4" opacity="0.1"/><circle cx="40" cy="70" r="1" fill="%2300A8CC" opacity="0.1"/><circle cx="90" cy="80" r="2.5" fill="%23FFD23F" opacity="0.1"/></svg>') repeat;
+    opacity: 0.3;
+    z-index: 0;
 }
 
 .section-title {
@@ -304,6 +440,17 @@ body {
     color: var(--text-dark);
     margin-bottom: 3rem;
     position: relative;
+    z-index: 1;
+}
+
+.section-title::before {
+    content: '🌺';
+    position: absolute;
+    left: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    animation: hibiscus 4s ease-in-out infinite;
 }
 
 .section-title::after {
@@ -312,10 +459,11 @@ body {
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
+    width: 100px;
     height: 4px;
-    background: var(--gradient-primary);
+    background: var(--gradient-sunset);
     border-radius: 2px;
+    box-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
 }
 
 .target-cards {
@@ -324,6 +472,8 @@ body {
     gap: 2rem;
     max-width: 900px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .target-card {
@@ -336,6 +486,7 @@ body {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    border: 2px solid transparent;
 }
 
 .target-card::before {
@@ -344,26 +495,69 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: var(--gradient-primary);
+    height: 6px;
+    background: var(--gradient-sunset);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.target-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: var(--gradient-tropical);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: -1;
+    border-radius: 50%;
+    transform: scale(0);
 }
 
 .target-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.02);
     box-shadow: var(--shadow-heavy);
+    border-color: var(--primary-color);
+}
+
+.target-card:hover::after {
+    opacity: 0.1;
+    transform: scale(1);
 }
 
 .card-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--gradient-primary);
+    width: 90px;
+    height: 90px;
+    background: var(--gradient-sunset);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem;
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: var(--white);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: tropicalSway 6s ease-in-out infinite;
+}
+
+.card-icon::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
 }
 
 .target-card h3 {
@@ -404,29 +598,63 @@ body {
 }
 
 .card-button {
-    background: var(--gradient-secondary);
+    background: var(--gradient-sunset);
     color: var(--white);
     border: none;
-    padding: 0.8rem 2rem;
+    padding: 1rem 2.5rem;
     border-radius: var(--border-radius);
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.card-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: var(--transition);
 }
 
 .card-button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-medium);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
 }
 
-/* プラン詳細セクション */
+.card-button:hover::before {
+    left: 100%;
+}
+
+/* プラン詳細セクション - ハワイテーマ */
 .plans-section {
     padding: 5rem 0;
-    background: var(--white);
+    background: linear-gradient(135deg, var(--white) 0%, var(--sand-beige) 100%);
+    position: relative;
+}
+
+.plans-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M0,100 Q50,50 100,100 T200,100 L200,200 L0,200 Z" fill="%23FF6B35" opacity="0.05"/></svg>') repeat-x top,
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M0,100 Q50,150 100,100 T200,100 L200,0 L0,0 Z" fill="%2300A8CC" opacity="0.05"/></svg>') repeat-x bottom;
+    z-index: 0;
 }
 
 .plan-detail {
     animation: fadeInUp 0.6s ease-out;
+    position: relative;
+    z-index: 1;
 }
 
 @keyframes fadeInUp {
@@ -443,6 +671,17 @@ body {
 .plan-header {
     text-align: center;
     margin-bottom: 3rem;
+    position: relative;
+}
+
+.plan-header::before {
+    content: '🌺 🌴 🌺';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    animation: float 6s ease-in-out infinite;
 }
 
 .plan-title {
@@ -450,11 +689,16 @@ body {
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 1rem;
+    background: var(--gradient-sunset);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .plan-subtitle {
     font-size: 1.2rem;
     color: var(--text-light);
+    font-style: italic;
 }
 
 .plan-content {
@@ -469,6 +713,24 @@ body {
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow-medium);
+    border: 3px solid var(--white);
+}
+
+.plan-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-sunset);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 1;
+}
+
+.plan-image:hover::before {
+    opacity: 0.1;
 }
 
 .plan-image img {
@@ -476,10 +738,12 @@ body {
     height: 400px;
     object-fit: cover;
     transition: var(--transition);
+    filter: brightness(1.1) saturate(1.2);
 }
 
 .plan-image:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08);
+    filter: brightness(1.2) saturate(1.4);
 }
 
 .plan-highlights {
@@ -493,32 +757,73 @@ body {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    padding: 1rem;
+    padding: 1.2rem;
     background: var(--background-light);
     border-radius: var(--border-radius);
     transition: var(--transition);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-sunset);
+    transition: var(--transition);
+    z-index: -1;
 }
 
 .highlight-item:hover {
-    background: var(--gradient-primary);
     color: var(--white);
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+}
+
+.highlight-item:hover::before {
+    left: 0;
 }
 
 .highlight-item i {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: var(--primary-color);
+    transition: var(--transition);
 }
 
 .highlight-item:hover i {
     color: var(--white);
+    transform: scale(1.2);
 }
 
 .pricing-info {
-    background: var(--background-light);
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--sand-beige) 100%);
     padding: 2rem;
     border-radius: var(--border-radius);
     margin-bottom: 2rem;
+    border: 2px solid var(--white);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-info::before {
+    content: '💰';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    opacity: 0.3;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 .original-price {
@@ -548,10 +853,37 @@ body {
     font-weight: 700;
     color: var(--primary-color);
     background: var(--white);
-    padding: 1rem;
+    padding: 1.2rem;
     border-radius: var(--border-radius);
     text-align: center;
-    border: 2px solid var(--primary-color);
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
+    position: relative;
+    overflow: hidden;
+    animation: sunsetGlow 4s ease-in-out infinite;
+}
+
+.final-price::before {
+    content: '✨';
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    font-size: 1.2rem;
+    animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.final-price::after {
+    content: '✨';
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.2rem;
+    animation: sparkle 1.5s ease-in-out infinite 0.5s;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
 }
 
 .plan-includes h4 {
@@ -579,10 +911,24 @@ body {
     font-size: 0.9rem;
 }
 
-/* 企業連携セクション */
+/* 企業連携セクション - ハワイテーマ */
 .about-section {
     padding: 5rem 0;
-    background: var(--background-light);
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--sand-beige) 100%);
+    position: relative;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,50 Q25,25 50,50 T100,50 L100,100 L0,100 Z" fill="%23FF6B35" opacity="0.03"/></svg>') repeat-x bottom,
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="3" fill="%23FF69B4" opacity="0.05"/><circle cx="80" cy="30" r="2" fill="%2300A8CC" opacity="0.05"/><circle cx="40" cy="70" r="4" fill="%23FFD23F" opacity="0.05"/></svg>') repeat;
+    z-index: 0;
 }
 
 .about-content {
@@ -590,6 +936,8 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .about-text h3 {
@@ -618,16 +966,31 @@ body {
 }
 
 .benefit-icon {
-    width: 50px;
-    height: 50px;
-    background: var(--gradient-primary);
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-sunset);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--white);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: oceanRipple 8s ease-in-out infinite;
+}
+
+.benefit-icon::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shine 3s ease-in-out infinite;
 }
 
 .benefit-content h4 {
@@ -908,7 +1271,7 @@ body {
     }
 }
 
-/* アニメーション */
+/* ハワイらしいアニメーション */
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -921,8 +1284,59 @@ body {
     }
 }
 
+@keyframes tropicalSway {
+    0%, 100% {
+        transform: rotate(0deg) translateY(0px);
+    }
+    25% {
+        transform: rotate(1deg) translateY(-2px);
+    }
+    50% {
+        transform: rotate(0deg) translateY(-4px);
+    }
+    75% {
+        transform: rotate(-1deg) translateY(-2px);
+    }
+}
+
+@keyframes oceanRipple {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.1) rotate(180deg);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+        opacity: 0.7;
+    }
+}
+
+@keyframes sunsetGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 107, 53, 0.6), 0 0 60px rgba(255, 105, 180, 0.3);
+    }
+}
+
 .pulse {
     animation: pulse 2s infinite;
+}
+
+.tropical-sway {
+    animation: tropicalSway 4s ease-in-out infinite;
+}
+
+.ocean-ripple {
+    animation: oceanRipple 6s ease-in-out infinite;
+}
+
+.sunset-glow {
+    animation: sunsetGlow 3s ease-in-out infinite;
 }
 
 /* スクロールアニメーション */
