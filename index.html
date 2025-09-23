@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ハワイだなも - 企業福利厚生ハワイ旅行</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-umbrella-beach"></i>
+                <span>ハワイだなも</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#plans">プラン</a></li>
+                <li><a href="#about">企業連携</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- メインビジュアル -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">企業福利厚生で叶える<br><span class="highlight">ハワイ旅行</span></h1>
+            <p class="hero-subtitle">ボーナスや退職金制度を活用して、特別なハワイ旅行を実現しませんか？</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('plans')">
+                    <i class="fas fa-plane"></i>
+                    プランを見る
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToSection('about')">
+                    <i class="fas fa-building"></i>
+                    企業連携について
+                </button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="floating-elements">
+                <div class="floating-element" style="--delay: 0s;">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <div class="floating-element" style="--delay: 1s;">
+                    <i class="fas fa-palm-tree"></i>
+                </div>
+                <div class="floating-element" style="--delay: 2s;">
+                    <i class="fas fa-water"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ターゲット層紹介 -->
+    <section class="target-section">
+        <div class="container">
+            <h2 class="section-title">あなたにぴったりのプランを見つけよう</h2>
+            <div class="target-cards">
+                <div class="target-card" onclick="showPlanDetails('honeymoon')">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>新婚旅行層</h3>
+                    <p class="age-range">26〜32歳</p>
+                    <p class="card-description">一生に一度の特別な旅を、企業のボーナス制度を活用して実現</p>
+                    <div class="card-features">
+                        <span class="feature-tag">5泊7日</span>
+                        <span class="feature-tag">ワイキキビュー</span>
+                        <span class="feature-tag">特別価格</span>
+                    </div>
+                    <button class="card-button">詳細を見る</button>
+                </div>
+                
+                <div class="target-card" onclick="showPlanDetails('second-honeymoon')">
+                    <div class="card-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>セカンドハネムーン層</h3>
+                    <p class="age-range">50〜60歳</p>
+                    <p class="card-description">人生第二章の贅沢な旅を、退職金制度を活用して実現</p>
+                    <div class="card-features">
+                        <span class="feature-tag">7泊9日</span>
+                        <span class="feature-tag">ビジネスクラス</span>
+                        <span class="feature-tag">カスタマイズ</span>
+                    </div>
+                    <button class="card-button">詳細を見る</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- プラン詳細セクション -->
+    <section id="plans" class="plans-section">
+        <div class="container">
+            <!-- 新婚旅行プラン -->
+            <div id="honeymoon-plan" class="plan-detail" style="display: none;">
+                <div class="plan-header">
+                    <h2 class="plan-title">憧れのハネムーン in HAWAII</h2>
+                    <p class="plan-subtitle">一生に一度の特別な旅を、企業のボーナス制度で実現</p>
+                </div>
+                
+                <div class="plan-content">
+                    <div class="plan-image">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="ハワイビーチ">
+                    </div>
+                    
+                    <div class="plan-info">
+                        <div class="plan-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>5泊7日</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-hotel"></i>
+                                <span>ワイキキオーシャンビュー</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-utensils"></i>
+                                <span>人気レストラン予約込み</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-swimmer"></i>
+                                <span>アクティビティ体験</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-info">
+                            <div class="original-price">
+                                <span>通常価格: ¥450,000</span>
+                            </div>
+                            <div class="discounted-price">
+                                <span>企業割引価格: ¥320,000</span>
+                            </div>
+                            <div class="company-support">
+                                <i class="fas fa-hand-holding-usd"></i>
+                                <span>企業支援: ¥100,000〜150,000</span>
+                            </div>
+                            <div class="final-price">
+                                <span>あなたの負担: ¥170,000〜220,000</span>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-includes">
+                            <h4>プランに含まれるもの</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> 往復航空券（エコノミークラス）</li>
+                                <li><i class="fas fa-check"></i> ワイキキオーシャンビューホテル5泊</li>
+                                <li><i class="fas fa-check"></i> 朝食付き</li>
+                                <li><i class="fas fa-check"></i> 空港送迎</li>
+                                <li><i class="fas fa-check"></i> 人気レストラン予約（2回分）</li>
+                                <li><i class="fas fa-check"></i> アクティビティ体験（1回分）</li>
+                                <li><i class="fas fa-check"></i> 旅行保険</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-large" onclick="openBookingForm('honeymoon')">
+                            <i class="fas fa-calendar-check"></i>
+                            予約・相談する
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- セカンドハネムーンプラン -->
+            <div id="second-honeymoon-plan" class="plan-detail" style="display: none;">
+                <div class="plan-header">
+                    <h2 class="plan-title">人生第二章、思い出再発見の旅</h2>
+                    <p class="plan-subtitle">退職金制度を活用した贅沢なハワイ旅行</p>
+                </div>
+                
+                <div class="plan-content">
+                    <div class="plan-image">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="ハワイリゾート">
+                    </div>
+                    
+                    <div class="plan-info">
+                        <div class="plan-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>7泊9日</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-plane"></i>
+                                <span>ビジネスクラス</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-golf-ball"></i>
+                                <span>ゴルフ・美術館巡り</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-cog"></i>
+                                <span>カスタマイズ可能</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-info">
+                            <div class="original-price">
+                                <span>通常価格: ¥850,000</span>
+                            </div>
+                            <div class="discounted-price">
+                                <span>企業割引価格: ¥650,000</span>
+                            </div>
+                            <div class="company-support">
+                                <i class="fas fa-hand-holding-usd"></i>
+                                <span>退職金制度活用: ¥200,000〜300,000</span>
+                            </div>
+                            <div class="final-price">
+                                <span>あなたの負担: ¥350,000〜450,000</span>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-includes">
+                            <h4>プランに含まれるもの</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> 往復航空券（ビジネスクラス）</li>
+                                <li><i class="fas fa-check"></i> 高級リゾートホテル7泊</li>
+                                <li><i class="fas fa-check"></i> 朝食・夕食付き</li>
+                                <li><i class="fas fa-check"></i> 空港送迎（リムジン）</li>
+                                <li><i class="fas fa-check"></i> ゴルフラウンド（1回分）</li>
+                                <li><i class="fas fa-check"></i> 美術館・博物館入場券</li>
+                                <li><i class="fas fa-check"></i> プライベートツアー（1回分）</li>
+                                <li><i class="fas fa-check"></i> プレミアム旅行保険</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-large" onclick="openBookingForm('second-honeymoon')">
+                            <i class="fas fa-calendar-check"></i>
+                            予約・相談する
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 企業連携セクション -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">企業・旅行会社連携の仕組み</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>なぜ企業と旅行会社が連携するのか？</h3>
+                    <p>この企画は、企業の福利厚生制度を活用することで、社員のエンゲージメント向上とハワイ旅行の需要喚起を同時に実現します。</p>
+                    
+                    <div class="benefits">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>社員のメリット</h4>
+                                <p>金銭的・時間的な制約を気にせず、質の高いハワイ旅行を楽しめる</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>企業のメリット</h4>
+                                <p>従業員のモチベーション向上により離職率が低下し、企業イメージが向上</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>旅行会社のメリット</h4>
+                                <p>安定した法人顧客を獲得し、長期的なリピーターを育成</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="企業連携">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約フォームモーダル -->
+    <div id="booking-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">予約・相談フォーム</h3>
+                <span class="close" onclick="closeBookingModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="booking-form">
+                    <div class="form-group">
+                        <label for="plan-type">プランタイプ</label>
+                        <select id="plan-type" required>
+                            <option value="">選択してください</option>
+                            <option value="honeymoon">憧れのハネムーン in HAWAII</option>
+                            <option value="second-honeymoon">人生第二章、思い出再発見の旅</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company-name">会社名</label>
+                        <input type="text" id="company-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name">お名前</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">電話番号</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="travel-date">希望出発日</label>
+                        <input type="date" id="travel-date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="participants">参加人数</label>
+                        <select id="participants" required>
+                            <option value="">選択してください</option>
+                            <option value="2">2名</option>
+                            <option value="4">4名</option>
+                            <option value="6">6名</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">ご要望・ご質問</label>
+                        <textarea id="message" rows="4" placeholder="ご要望やご質問がございましたら、お気軽にお書きください"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large">
+                        <i class="fas fa-paper-plane"></i>
+                        送信する
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ハワイだなも</h4>
+                    <p>企業福利厚生を活用したハワイ旅行の実現をサポートします。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>プラン</h4>
+                    <ul>
+                        <li><a href="#" onclick="showPlanDetails('honeymoon')">新婚旅行プラン</a></li>
+                        <li><a href="#" onclick="showPlanDetails('second-honeymoon')">セカンドハネムーンプラン</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>サポート</h4>
+                    <ul>
+                        <li><a href="#contact">お問い合わせ</a></li>
+                        <li><a href="#">よくある質問</a></li>
+                        <li><a href="#">利用規約</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>連絡先</h4>
+                    <p><i class="fas fa-phone"></i> 03-1234-5678</p>
+                    <p><i class="fas fa-envelope"></i> info@hawaiidanamo.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ハワイだなも. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
