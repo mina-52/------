@@ -67,103 +67,144 @@
         <div class="container">
             <h2 class="section-title">あなたにぴったりのプランを見つけよう 🌺</h2>
             
-            <!-- プラン選択タブ -->
-            <div class="plan-tabs">
-                <button class="plan-tab active" onclick="selectPlan('honeymoon')" data-plan="honeymoon">
-                    <div class="tab-icon">💕</div>
-                    <div class="tab-content">
-                        <h3>新婚旅行プラン</h3>
+            <!-- メインプラン選択 -->
+            <div class="main-plan-tabs">
+                <button class="main-plan-tab active" onclick="selectMainPlan('honeymoon')" data-main-plan="honeymoon">
+                    <div class="main-tab-icon">💕</div>
+                    <div class="main-tab-content">
+                        <h2>新婚旅行プラン</h2>
                         <p>26〜32歳向け</p>
-                        <div class="tab-features">
-                            <span class="feature-tag">5泊7日</span>
-                            <span class="feature-tag">ワイキキビュー</span>
+                        <div class="main-tab-description">
+                            <p>一生に一度の特別な旅を、企業のボーナス制度を活用して実現</p>
                         </div>
-                        <div class="tab-price">
-                            <span class="original-price">¥450,000</span>
-                            <span class="company-price">¥170,000〜</span>
+                        <div class="main-tab-price">
+                            <span class="price-range">¥170,000〜220,000</span>
+                            <span class="price-note">あなたの負担額</span>
                         </div>
                     </div>
                 </button>
                 
-                <button class="plan-tab" onclick="selectPlan('second-honeymoon')" data-plan="second-honeymoon">
-                    <div class="tab-icon">💎</div>
-                    <div class="tab-content">
-                        <h3>セカンドハネムーンプラン</h3>
+                <button class="main-plan-tab" onclick="selectMainPlan('second-honeymoon')" data-main-plan="second-honeymoon">
+                    <div class="main-tab-icon">💎</div>
+                    <div class="main-tab-content">
+                        <h2>セカンドハネムーンプラン</h2>
                         <p>50〜60歳向け</p>
-                        <div class="tab-features">
-                            <span class="feature-tag">7泊9日</span>
-                            <span class="feature-tag">ビジネスクラス</span>
+                        <div class="main-tab-description">
+                            <p>人生第二章の贅沢な旅を、退職金制度を活用して実現</p>
                         </div>
-                        <div class="tab-price">
-                            <span class="original-price">¥850,000</span>
-                            <span class="company-price">¥350,000〜</span>
-                        </div>
-                    </div>
-                </button>
-                
-                <button class="plan-tab" onclick="selectPlan('family')" data-plan="family">
-                    <div class="tab-icon">👨‍👩‍👧‍👦</div>
-                    <div class="tab-content">
-                        <h3>ファミリープラン</h3>
-                        <p>家族旅行向け</p>
-                        <div class="tab-features">
-                            <span class="feature-tag">6泊8日</span>
-                            <span class="feature-tag">キッズ向け</span>
-                        </div>
-                        <div class="tab-price">
-                            <span class="original-price">¥650,000</span>
-                            <span class="company-price">¥280,000〜</span>
+                        <div class="main-tab-price">
+                            <span class="price-range">¥350,000〜450,000</span>
+                            <span class="price-note">あなたの負担額</span>
                         </div>
                     </div>
                 </button>
-                
-                <button class="plan-tab" onclick="selectPlan('budget')" data-plan="budget">
-                    <div class="tab-icon">💰</div>
-                    <div class="tab-content">
-                        <h3>お得プラン</h3>
-                        <p>コスパ重視</p>
-                        <div class="tab-features">
-                            <span class="feature-tag">4泊6日</span>
-                            <span class="feature-tag">格安ホテル</span>
+            </div>
+            
+            <!-- 派生プラン選択 -->
+            <div id="honeymoon-sub-plans" class="sub-plan-section">
+                <h3>💕 新婚旅行プランの詳細選択</h3>
+                <div class="sub-plan-tabs">
+                    <button class="sub-plan-tab active" onclick="selectSubPlan('honeymoon', 'standard')" data-sub-plan="standard">
+                        <div class="sub-tab-icon">🏖️</div>
+                        <div class="sub-tab-content">
+                            <h4>スタンダードプラン</h4>
+                            <p>5泊7日・ワイキキビュー</p>
+                            <div class="sub-tab-features">
+                                <span class="feature-tag">エコノミークラス</span>
+                                <span class="feature-tag">朝食付き</span>
+                            </div>
+                            <div class="sub-tab-price">
+                                <span class="original-price">¥450,000</span>
+                                <span class="company-price">¥170,000〜</span>
+                            </div>
                         </div>
-                        <div class="tab-price">
-                            <span class="original-price">¥320,000</span>
-                            <span class="company-price">¥120,000〜</span>
+                    </button>
+                    
+                    <button class="sub-plan-tab" onclick="selectSubPlan('honeymoon', 'premium')" data-sub-plan="premium">
+                        <div class="sub-tab-icon">✨</div>
+                        <div class="sub-tab-content">
+                            <h4>プレミアムプラン</h4>
+                            <p>6泊8日・オーシャンフロント</p>
+                            <div class="sub-tab-features">
+                                <span class="feature-tag">ビジネスクラス</span>
+                                <span class="feature-tag">全食事付き</span>
+                            </div>
+                            <div class="sub-tab-price">
+                                <span class="original-price">¥650,000</span>
+                                <span class="company-price">¥250,000〜</span>
+                            </div>
                         </div>
-                    </div>
-                </button>
-                
-                <button class="plan-tab" onclick="selectPlan('luxury')" data-plan="luxury">
-                    <div class="tab-icon">👑</div>
-                    <div class="tab-content">
-                        <h3>ラグジュアリープラン</h3>
-                        <p>最高級の旅</p>
-                        <div class="tab-features">
-                            <span class="feature-tag">8泊10日</span>
-                            <span class="feature-tag">ファーストクラス</span>
+                    </button>
+                    
+                    <button class="sub-plan-tab" onclick="selectSubPlan('honeymoon', 'luxury')" data-sub-plan="luxury">
+                        <div class="sub-tab-icon">👑</div>
+                        <div class="sub-tab-content">
+                            <h4>ラグジュアリープラン</h4>
+                            <p>7泊9日・最高級リゾート</p>
+                            <div class="sub-tab-features">
+                                <span class="feature-tag">ファーストクラス</span>
+                                <span class="feature-tag">専属コンシェルジュ</span>
+                            </div>
+                            <div class="sub-tab-price">
+                                <span class="original-price">¥950,000</span>
+                                <span class="company-price">¥380,000〜</span>
+                            </div>
                         </div>
-                        <div class="tab-price">
-                            <span class="original-price">¥1,200,000</span>
-                            <span class="company-price">¥500,000〜</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="second-honeymoon-sub-plans" class="sub-plan-section" style="display: none;">
+                <h3>💎 セカンドハネムーンプランの詳細選択</h3>
+                <div class="sub-plan-tabs">
+                    <button class="sub-plan-tab active" onclick="selectSubPlan('second-honeymoon', 'comfort')" data-sub-plan="comfort">
+                        <div class="sub-tab-icon">🌺</div>
+                        <div class="sub-tab-content">
+                            <h4>コンフォートプラン</h4>
+                            <p>7泊9日・ビジネスクラス</p>
+                            <div class="sub-tab-features">
+                                <span class="feature-tag">高級ホテル</span>
+                                <span class="feature-tag">ゴルフ体験</span>
+                            </div>
+                            <div class="sub-tab-price">
+                                <span class="original-price">¥850,000</span>
+                                <span class="company-price">¥350,000〜</span>
+                            </div>
                         </div>
-                    </div>
-                </button>
-                
-                <button class="plan-tab" onclick="selectPlan('adventure')" data-plan="adventure">
-                    <div class="tab-icon">🏄‍♂️</div>
-                    <div class="tab-content">
-                        <h3>アドベンチャープラン</h3>
-                        <p>アクティブ派向け</p>
-                        <div class="tab-features">
-                            <span class="feature-tag">5泊7日</span>
-                            <span class="feature-tag">アクティビティ充実</span>
+                    </button>
+                    
+                    <button class="sub-plan-tab" onclick="selectSubPlan('second-honeymoon', 'deluxe')" data-sub-plan="deluxe">
+                        <div class="sub-tab-icon">🏆</div>
+                        <div class="sub-tab-content">
+                            <h4>デラックスプラン</h4>
+                            <p>8泊10日・ファーストクラス</p>
+                            <div class="sub-tab-features">
+                                <span class="feature-tag">最高級リゾート</span>
+                                <span class="feature-tag">プライベートツアー</span>
+                            </div>
+                            <div class="sub-tab-price">
+                                <span class="original-price">¥1,200,000</span>
+                                <span class="company-price">¥500,000〜</span>
+                            </div>
                         </div>
-                        <div class="tab-price">
-                            <span class="original-price">¥550,000</span>
-                            <span class="company-price">¥220,000〜</span>
+                    </button>
+                    
+                    <button class="sub-plan-tab" onclick="selectSubPlan('second-honeymoon', 'wellness')" data-sub-plan="wellness">
+                        <div class="sub-tab-icon">🧘‍♀️</div>
+                        <div class="sub-tab-content">
+                            <h4>ウェルネスプラン</h4>
+                            <p>9泊11日・健康重視</p>
+                            <div class="sub-tab-features">
+                                <span class="feature-tag">スパ・マッサージ</span>
+                                <span class="feature-tag">健康プログラム</span>
+                            </div>
+                            <div class="sub-tab-price">
+                                <span class="original-price">¥1,100,000</span>
+                                <span class="company-price">¥450,000〜</span>
+                            </div>
                         </div>
-                    </div>
-                </button>
+                    </button>
+                </div>
             </div>
             
             <!-- 価格比較表示 -->
@@ -214,11 +255,11 @@
     <!-- プラン詳細セクション -->
     <section id="plans" class="plans-section">
         <div class="container">
-            <!-- 新婚旅行プラン -->
-            <div id="honeymoon-plan" class="plan-detail" style="display: none;">
+            <!-- 新婚旅行プラン詳細 -->
+            <div id="honeymoon-standard-plan" class="plan-detail" style="display: none;">
                 <div class="plan-header">
-                    <h2 class="plan-title hawaii-text">憧れのハネムーン in HAWAII</h2>
-                    <p class="plan-subtitle">一生に一度の特別な旅を、企業のボーナス制度で実現</p>
+                    <h2 class="plan-title hawaii-text">スタンダードプラン - 憧れのハネムーン in HAWAII</h2>
+                    <p class="plan-subtitle">5泊7日・ワイキキビューで一生に一度の特別な旅を</p>
                 </div>
                 
                 <div class="plan-content">
@@ -297,7 +338,7 @@
                             </ul>
                         </div>
                         
-                        <button class="btn btn-primary btn-large" onclick="openBookingForm('honeymoon')">
+                        <button class="btn btn-primary btn-large" onclick="openBookingForm('honeymoon-standard')">
                             <i class="fas fa-calendar-check"></i>
                             予約・相談する
                         </button>
@@ -305,11 +346,192 @@
                 </div>
             </div>
             
-            <!-- セカンドハネムーンプラン -->
-            <div id="second-honeymoon-plan" class="plan-detail" style="display: none;">
+            <!-- 新婚旅行プレミアムプラン -->
+            <div id="honeymoon-premium-plan" class="plan-detail" style="display: none;">
                 <div class="plan-header">
-                    <h2 class="plan-title hawaii-text">人生第二章、思い出再発見の旅</h2>
-                    <p class="plan-subtitle">退職金制度を活用した贅沢なハワイ旅行</p>
+                    <h2 class="plan-title hawaii-text">プレミアムプラン - 特別なハネムーン in HAWAII</h2>
+                    <p class="plan-subtitle">6泊8日・オーシャンフロントでより贅沢な旅を</p>
+                </div>
+                
+                <div class="plan-content">
+                    <div class="plan-image">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="ハワイリゾート">
+                    </div>
+                    
+                    <div class="plan-info">
+                        <div class="plan-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>6泊8日</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-plane"></i>
+                                <span>ビジネスクラス</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-utensils"></i>
+                                <span>全食事付き</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-water"></i>
+                                <span>オーシャンフロント</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-info">
+                            <div class="participants-selector">
+                                <label for="honeymoon-premium-participants">参加人数を選択してください</label>
+                                <select id="honeymoon-premium-participants" onchange="updateHoneymoonPremiumPrice()">
+                                    <option value="2">2名</option>
+                                    <option value="4">4名</option>
+                                </select>
+                            </div>
+                            
+                            <div class="price-breakdown">
+                                <div class="price-item">
+                                    <span class="price-label">通常価格（個人申し込み）</span>
+                                    <span class="price-value" id="honeymoon-premium-original">¥650,000</span>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price-label">企業割引価格</span>
+                                    <span class="price-value" id="honeymoon-premium-discounted">¥520,000</span>
+                                </div>
+                                <div class="price-item company-support">
+                                    <span class="price-label">企業支援（ボーナス制度活用）</span>
+                                    <span class="price-value" id="honeymoon-premium-support">¥150,000〜200,000</span>
+                                </div>
+                                <div class="final-price">
+                                    <span class="price-label">あなたの負担額</span>
+                                    <span class="price-value" id="honeymoon-premium-final">¥250,000〜320,000</span>
+                                </div>
+                            </div>
+                            
+                            <div class="savings-highlight">
+                                <div class="savings-icon">💰</div>
+                                <div class="savings-text">
+                                    <span class="savings-amount" id="honeymoon-premium-savings">¥400,000</span>
+                                    <span class="savings-label">もお得！</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-includes">
+                            <h4>プランに含まれるもの</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> 往復航空券（ビジネスクラス）</li>
+                                <li><i class="fas fa-check"></i> オーシャンフロントホテル6泊</li>
+                                <li><i class="fas fa-check"></i> 全食事付き</li>
+                                <li><i class="fas fa-check"></i> 空港送迎（リムジン）</li>
+                                <li><i class="fas fa-check"></i> 人気レストラン予約（3回分）</li>
+                                <li><i class="fas fa-check"></i> アクティビティ体験（2回分）</li>
+                                <li><i class="fas fa-check"></i> スパ・マッサージ（1回分）</li>
+                                <li><i class="fas fa-check"></i> プレミアム旅行保険</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-large" onclick="openBookingForm('honeymoon-premium')">
+                            <i class="fas fa-calendar-check"></i>
+                            予約・相談する
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 新婚旅行ラグジュアリープラン -->
+            <div id="honeymoon-luxury-plan" class="plan-detail" style="display: none;">
+                <div class="plan-header">
+                    <h2 class="plan-title hawaii-text">ラグジュアリープラン - 最高級ハネムーン in HAWAII</h2>
+                    <p class="plan-subtitle">7泊9日・最高級リゾートで究極の贅沢な旅を</p>
+                </div>
+                
+                <div class="plan-content">
+                    <div class="plan-image">
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="ハワイラグジュアリー">
+                    </div>
+                    
+                    <div class="plan-info">
+                        <div class="plan-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>7泊9日</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-plane"></i>
+                                <span>ファーストクラス</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-crown"></i>
+                                <span>最高級リゾート</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-concierge-bell"></i>
+                                <span>専属コンシェルジュ</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-info">
+                            <div class="participants-selector">
+                                <label for="honeymoon-luxury-participants">参加人数を選択してください</label>
+                                <select id="honeymoon-luxury-participants" onchange="updateHoneymoonLuxuryPrice()">
+                                    <option value="2">2名</option>
+                                </select>
+                            </div>
+                            
+                            <div class="price-breakdown">
+                                <div class="price-item">
+                                    <span class="price-label">通常価格（個人申し込み）</span>
+                                    <span class="price-value" id="honeymoon-luxury-original">¥950,000</span>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price-label">企業割引価格</span>
+                                    <span class="price-value" id="honeymoon-luxury-discounted">¥760,000</span>
+                                </div>
+                                <div class="price-item company-support">
+                                    <span class="price-label">企業支援（特別制度活用）</span>
+                                    <span class="price-value" id="honeymoon-luxury-support">¥200,000〜250,000</span>
+                                </div>
+                                <div class="final-price">
+                                    <span class="price-label">あなたの負担額</span>
+                                    <span class="price-value" id="honeymoon-luxury-final">¥380,000〜510,000</span>
+                                </div>
+                            </div>
+                            
+                            <div class="savings-highlight">
+                                <div class="savings-icon">💰</div>
+                                <div class="savings-text">
+                                    <span class="savings-amount" id="honeymoon-luxury-savings">¥570,000</span>
+                                    <span class="savings-label">もお得！</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-includes">
+                            <h4>プランに含まれるもの</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> 往復航空券（ファーストクラス）</li>
+                                <li><i class="fas fa-check"></i> 最高級リゾートホテル7泊</li>
+                                <li><i class="fas fa-check"></i> 全食事付き（高級レストラン）</li>
+                                <li><i class="fas fa-check"></i> 空港送迎（リムジン）</li>
+                                <li><i class="fas fa-check"></i> 専属コンシェルジュサービス</li>
+                                <li><i class="fas fa-check"></i> プライベートツアー（2回分）</li>
+                                <li><i class="fas fa-check"></i> スパ・マッサージ（3回分）</li>
+                                <li><i class="fas fa-check"></i> プレミアム旅行保険</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-large" onclick="openBookingForm('honeymoon-luxury')">
+                            <i class="fas fa-calendar-check"></i>
+                            予約・相談する
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- セカンドハネムーンコンフォートプラン -->
+            <div id="second-honeymoon-comfort-plan" class="plan-detail" style="display: none;">
+                <div class="plan-header">
+                    <h2 class="plan-title hawaii-text">コンフォートプラン - 人生第二章、思い出再発見の旅</h2>
+                    <p class="plan-subtitle">7泊9日・ビジネスクラスで贅沢なハワイ旅行</p>
                 </div>
                 
                 <div class="plan-content">

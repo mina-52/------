@@ -19,7 +19,8 @@ function initializeApp() {
     setupSmoothScrolling();
     
     // デフォルトで新婚旅行プランを表示
-    selectPlan('honeymoon');
+    selectMainPlan('honeymoon');
+    selectSubPlan('honeymoon', 'standard');
 }
 
 // ナビゲーションの設定
@@ -103,18 +104,51 @@ function setupSmoothScrolling() {
     };
 }
 
-// プラン選択機能
-function selectPlan(planType) {
-    // すべてのタブのアクティブ状態を解除
-    const allTabs = document.querySelectorAll('.plan-tab');
-    allTabs.forEach(tab => {
+// メインプラン選択機能
+function selectMainPlan(mainPlanType) {
+    // すべてのメインタブのアクティブ状態を解除
+    const allMainTabs = document.querySelectorAll('.main-plan-tab');
+    allMainTabs.forEach(tab => {
         tab.classList.remove('active');
     });
 
-    // 選択されたタブをアクティブに
-    const selectedTab = document.querySelector(`[data-plan="${planType}"]`);
-    if (selectedTab) {
-        selectedTab.classList.add('active');
+    // 選択されたメインタブをアクティブに
+    const selectedMainTab = document.querySelector(`[data-main-plan="${mainPlanType}"]`);
+    if (selectedMainTab) {
+        selectedMainTab.classList.add('active');
+    }
+
+    // すべての派生プランセクションを非表示
+    const allSubPlanSections = document.querySelectorAll('.sub-plan-section');
+    allSubPlanSections.forEach(section => {
+        section.style.display = 'none';
+    });
+
+    // 選択された派生プランセクションを表示
+    const selectedSubPlanSection = document.getElementById(mainPlanType + '-sub-plans');
+    if (selectedSubPlanSection) {
+        selectedSubPlanSection.style.display = 'block';
+        
+        // 最初の派生プランを選択
+        const firstSubTab = selectedSubPlanSection.querySelector('.sub-plan-tab');
+        if (firstSubTab) {
+            firstSubTab.click();
+        }
+    }
+}
+
+// 派生プラン選択機能
+function selectSubPlan(mainPlanType, subPlanType) {
+    // 現在のメインプランの派生タブのアクティブ状態を解除
+    const currentSubTabs = document.querySelectorAll(`#${mainPlanType}-sub-plans .sub-plan-tab`);
+    currentSubTabs.forEach(tab => {
+        tab.classList.remove('active');
+    });
+
+    // 選択された派生タブをアクティブに
+    const selectedSubTab = document.querySelector(`#${mainPlanType}-sub-plans [data-sub-plan="${subPlanType}"]`);
+    if (selectedSubTab) {
+        selectedSubTab.classList.add('active');
     }
 
     // すべてのプラン詳細を非表示
@@ -123,13 +157,13 @@ function selectPlan(planType) {
         plan.style.display = 'none';
     });
 
-    // 選択されたプランを表示
-    const selectedPlan = document.getElementById(planType + '-plan');
+    // 選択されたプラン詳細を表示
+    const selectedPlan = document.getElementById(`${mainPlanType}-${subPlanType}-plan`);
     if (selectedPlan) {
         selectedPlan.style.display = 'block';
         
         // 価格比較を更新
-        updatePriceComparison(planType);
+        updatePriceComparison(`${mainPlanType}-${subPlanType}`);
         
         // プランセクションにスクロール
         const plansSection = document.getElementById('plans');
@@ -139,6 +173,18 @@ function selectPlan(planType) {
                 block: 'start'
             });
         }
+    }
+}
+
+// プラン選択機能（後方互換性のため）
+function selectPlan(planType) {
+    // 既存のプランタイプを新しい構造にマッピング
+    if (planType === 'honeymoon') {
+        selectMainPlan('honeymoon');
+        selectSubPlan('honeymoon', 'standard');
+    } else if (planType === 'second-honeymoon') {
+        selectMainPlan('second-honeymoon');
+        selectSubPlan('second-honeymoon', 'comfort');
     }
 }
 
@@ -380,35 +426,37 @@ function showSuccessMessage() {
 // 価格計算機能
 function calculatePrice(planType, participants) {
     const prices = {
-        'honeymoon': {
+        // 新婚旅行プラン
+        'honeymoon-standard': {
             original: 450000,
             discounted: 320000,
             companySupport: 100000
         },
-        'second-honeymoon': {
+        'honeymoon-premium': {
+            original: 650000,
+            discounted: 520000,
+            companySupport: 150000
+        },
+        'honeymoon-luxury': {
+            original: 950000,
+            discounted: 760000,
+            companySupport: 200000
+        },
+        // セカンドハネムーンプラン
+        'second-honeymoon-comfort': {
             original: 850000,
             discounted: 650000,
             companySupport: 200000
         },
-        'family': {
-            original: 650000,
-            discounted: 480000,
-            companySupport: 150000
-        },
-        'budget': {
-            original: 320000,
-            discounted: 240000,
-            companySupport: 80000
-        },
-        'luxury': {
+        'second-honeymoon-deluxe': {
             original: 1200000,
             discounted: 900000,
             companySupport: 300000
         },
-        'adventure': {
-            original: 550000,
-            discounted: 420000,
-            companySupport: 150000
+        'second-honeymoon-wellness': {
+            original: 1100000,
+            discounted: 850000,
+            companySupport: 250000
         }
     };
     
@@ -476,9 +524,9 @@ function updatePriceDisplay(planType, participants = 2) {
 }
 
 // 各プランの価格更新関数
-function updateHoneymoonPrice() {
+function updateHoneymoonStandardPrice() {
     const participants = parseInt(document.getElementById('honeymoon-participants').value);
-    const prices = calculatePrice('honeymoon', participants);
+    const prices = calculatePrice('honeymoon-standard', participants);
     
     if (prices) {
         document.getElementById('honeymoon-original').textContent = `¥${prices.original.toLocaleString()}`;
@@ -488,9 +536,33 @@ function updateHoneymoonPrice() {
     }
 }
 
-function updateSecondHoneymoonPrice() {
+function updateHoneymoonPremiumPrice() {
+    const participants = parseInt(document.getElementById('honeymoon-premium-participants').value);
+    const prices = calculatePrice('honeymoon-premium', participants);
+    
+    if (prices) {
+        document.getElementById('honeymoon-premium-original').textContent = `¥${prices.original.toLocaleString()}`;
+        document.getElementById('honeymoon-premium-discounted').textContent = `¥${prices.discounted.toLocaleString()}`;
+        document.getElementById('honeymoon-premium-final').textContent = `¥${prices.final.toLocaleString()}`;
+        document.getElementById('honeymoon-premium-savings').textContent = `¥${(prices.original - prices.final).toLocaleString()}`;
+    }
+}
+
+function updateHoneymoonLuxuryPrice() {
+    const participants = parseInt(document.getElementById('honeymoon-luxury-participants').value);
+    const prices = calculatePrice('honeymoon-luxury', participants);
+    
+    if (prices) {
+        document.getElementById('honeymoon-luxury-original').textContent = `¥${prices.original.toLocaleString()}`;
+        document.getElementById('honeymoon-luxury-discounted').textContent = `¥${prices.discounted.toLocaleString()}`;
+        document.getElementById('honeymoon-luxury-final').textContent = `¥${prices.final.toLocaleString()}`;
+        document.getElementById('honeymoon-luxury-savings').textContent = `¥${(prices.original - prices.final).toLocaleString()}`;
+    }
+}
+
+function updateSecondHoneymoonComfortPrice() {
     const participants = parseInt(document.getElementById('second-honeymoon-participants').value);
-    const prices = calculatePrice('second-honeymoon', participants);
+    const prices = calculatePrice('second-honeymoon-comfort', participants);
     
     if (prices) {
         document.getElementById('second-honeymoon-original').textContent = `¥${prices.original.toLocaleString()}`;
@@ -500,52 +572,13 @@ function updateSecondHoneymoonPrice() {
     }
 }
 
-function updateFamilyPrice() {
-    const participants = parseInt(document.getElementById('family-participants').value);
-    const prices = calculatePrice('family', participants);
-    
-    if (prices) {
-        document.getElementById('family-original').textContent = `¥${prices.original.toLocaleString()}`;
-        document.getElementById('family-discounted').textContent = `¥${prices.discounted.toLocaleString()}`;
-        document.getElementById('family-final').textContent = `¥${prices.final.toLocaleString()}`;
-        document.getElementById('family-savings').textContent = `¥${(prices.original - prices.final).toLocaleString()}`;
-    }
+// 後方互換性のための関数
+function updateHoneymoonPrice() {
+    updateHoneymoonStandardPrice();
 }
 
-function updateBudgetPrice() {
-    const participants = parseInt(document.getElementById('budget-participants').value);
-    const prices = calculatePrice('budget', participants);
-    
-    if (prices) {
-        document.getElementById('budget-original').textContent = `¥${prices.original.toLocaleString()}`;
-        document.getElementById('budget-discounted').textContent = `¥${prices.discounted.toLocaleString()}`;
-        document.getElementById('budget-final').textContent = `¥${prices.final.toLocaleString()}`;
-        document.getElementById('budget-savings').textContent = `¥${(prices.original - prices.final).toLocaleString()}`;
-    }
-}
-
-function updateLuxuryPrice() {
-    const participants = parseInt(document.getElementById('luxury-participants').value);
-    const prices = calculatePrice('luxury', participants);
-    
-    if (prices) {
-        document.getElementById('luxury-original').textContent = `¥${prices.original.toLocaleString()}`;
-        document.getElementById('luxury-discounted').textContent = `¥${prices.discounted.toLocaleString()}`;
-        document.getElementById('luxury-final').textContent = `¥${prices.final.toLocaleString()}`;
-        document.getElementById('luxury-savings').textContent = `¥${(prices.original - prices.final).toLocaleString()}`;
-    }
-}
-
-function updateAdventurePrice() {
-    const participants = parseInt(document.getElementById('adventure-participants').value);
-    const prices = calculatePrice('adventure', participants);
-    
-    if (prices) {
-        document.getElementById('adventure-original').textContent = `¥${prices.original.toLocaleString()}`;
-        document.getElementById('adventure-discounted').textContent = `¥${prices.discounted.toLocaleString()}`;
-        document.getElementById('adventure-final').textContent = `¥${prices.final.toLocaleString()}`;
-        document.getElementById('adventure-savings').textContent = `¥${(prices.original - prices.final).toLocaleString()}`;
-    }
+function updateSecondHoneymoonPrice() {
+    updateSecondHoneymoonComfortPrice();
 }
 
 // 参加人数変更時の価格更新（後方互換性のため）

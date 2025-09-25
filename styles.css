@@ -433,30 +433,30 @@ body::before {
     z-index: 0;
 }
 
-/* プラン選択タブ */
-.plan-tabs {
+/* メインプラン選択タブ */
+.main-plan-tabs {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
     margin-bottom: 3rem;
     position: relative;
     z-index: 1;
 }
 
-.plan-tab {
+.main-plan-tab {
     background: var(--white);
-    border: 3px solid transparent;
+    border: 4px solid transparent;
     border-radius: var(--border-radius);
-    padding: 1.5rem;
+    padding: 2rem;
     cursor: pointer;
     transition: var(--transition);
     position: relative;
     overflow: hidden;
-    text-align: left;
+    text-align: center;
     box-shadow: var(--shadow-light);
 }
 
-.plan-tab::before {
+.main-plan-tab::before {
     content: '';
     position: absolute;
     top: 0;
@@ -469,56 +469,185 @@ body::before {
     z-index: -1;
 }
 
-.plan-tab:hover {
+.main-plan-tab:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-heavy);
+    border-color: var(--primary-color);
+}
+
+.main-plan-tab:hover::before {
+    left: 0;
+    opacity: 0.1;
+}
+
+.main-plan-tab.active {
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--white) 0%, var(--sand-beige) 100%);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-5px);
+}
+
+.main-plan-tab.active::before {
+    left: 0;
+    opacity: 0.15;
+}
+
+.main-tab-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.main-tab-content h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    background: var(--gradient-sunset);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.main-tab-content p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.main-tab-description {
+    margin-bottom: 1.5rem;
+}
+
+.main-tab-description p {
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.main-tab-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.price-range {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    background: var(--gradient-sunset);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.price-note {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* 派生プラン選択セクション */
+.sub-plan-section {
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.sub-plan-section h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    background: var(--gradient-sunset);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.sub-plan-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.sub-plan-tab {
+    background: var(--white);
+    border: 3px solid transparent;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: var(--shadow-light);
+}
+
+.sub-plan-tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-sunset);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: -1;
+}
+
+.sub-plan-tab:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-heavy);
     border-color: var(--primary-color);
 }
 
-.plan-tab:hover::before {
+.sub-plan-tab:hover::before {
     left: 0;
     opacity: 0.1;
 }
 
-.plan-tab.active {
+.sub-plan-tab.active {
     border-color: var(--primary-color);
     background: linear-gradient(135deg, var(--white) 0%, var(--sand-beige) 100%);
     box-shadow: var(--shadow-medium);
     transform: translateY(-3px);
 }
 
-.plan-tab.active::before {
+.sub-plan-tab.active::before {
     left: 0;
     opacity: 0.15;
 }
 
-.tab-icon {
+.sub-tab-icon {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     text-align: center;
 }
 
-.tab-content h3 {
+.sub-tab-content h4 {
     font-size: 1.3rem;
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 0.5rem;
 }
 
-.tab-content p {
+.sub-tab-content p {
     color: var(--text-light);
     margin-bottom: 1rem;
     font-size: 0.9rem;
 }
 
-.tab-features {
+.sub-tab-features {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 1rem;
     flex-wrap: wrap;
 }
 
-.tab-features .feature-tag {
+.sub-tab-features .feature-tag {
     background: var(--background-light);
     color: var(--text-dark);
     padding: 0.3rem 0.8rem;
@@ -527,25 +656,25 @@ body::before {
     font-weight: 500;
 }
 
-.plan-tab.active .tab-features .feature-tag {
+.sub-plan-tab.active .sub-tab-features .feature-tag {
     background: var(--gradient-sunset);
     color: var(--white);
 }
 
-.tab-price {
+.sub-tab-price {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
 }
 
-.tab-price .original-price {
+.sub-tab-price .original-price {
     font-size: 0.9rem;
     color: var(--text-light);
     text-decoration: line-through;
 }
 
-.tab-price .company-price {
+.sub-tab-price .company-price {
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--primary-color);
@@ -1598,20 +1727,37 @@ body::before {
         justify-content: center;
     }
     
-    .plan-tabs {
+    .main-plan-tabs {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .main-plan-tab {
+        padding: 1.5rem;
+    }
+    
+    .main-tab-icon {
+        font-size: 3rem;
+    }
+    
+    .main-tab-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .sub-plan-tabs {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
     
-    .plan-tab {
+    .sub-plan-tab {
         padding: 1rem;
     }
     
-    .tab-icon {
+    .sub-tab-icon {
         font-size: 2rem;
     }
     
-    .tab-content h3 {
+    .sub-tab-content h4 {
         font-size: 1.1rem;
     }
     
