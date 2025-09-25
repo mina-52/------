@@ -618,194 +618,11 @@
                 </div>
             </div>
             
-            <!-- ファミリープラン -->
-            <div id="family-plan" class="plan-detail" style="display: none;">
+            <!-- セカンドハネムーンデラックスプラン -->
+            <div id="second-honeymoon-deluxe-plan" class="plan-detail" style="display: none;">
                 <div class="plan-header">
-                    <h2 class="plan-title hawaii-text">家族みんなでハワイ旅行</h2>
-                    <p class="plan-subtitle">お子様も楽しめる家族向けプラン</p>
-                </div>
-                
-                <div class="plan-content">
-                    <div class="plan-image">
-                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="ハワイファミリー">
-                    </div>
-                    
-                    <div class="plan-info">
-                        <div class="plan-highlights">
-                            <div class="highlight-item">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>6泊8日</span>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-child"></i>
-                                <span>キッズ向けアクティビティ</span>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-home"></i>
-                                <span>ファミリールーム</span>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-utensils"></i>
-                                <span>キッズメニュー付き</span>
-                            </div>
-                        </div>
-                        
-                        <div class="pricing-info">
-                            <div class="participants-selector">
-                                <label for="family-participants">参加人数を選択してください</label>
-                                <select id="family-participants" onchange="updateFamilyPrice()">
-                                    <option value="4">4名（大人2名+子供2名）</option>
-                                    <option value="5">5名（大人2名+子供3名）</option>
-                                    <option value="6">6名（大人3名+子供3名）</option>
-                                </select>
-                            </div>
-                            
-                            <div class="price-breakdown">
-                                <div class="price-item">
-                                    <span class="price-label">通常価格（個人申し込み）</span>
-                                    <span class="price-value" id="family-original">¥650,000</span>
-                                </div>
-                                <div class="price-item">
-                                    <span class="price-label">企業割引価格</span>
-                                    <span class="price-value" id="family-discounted">¥480,000</span>
-                                </div>
-                                <div class="price-item company-support">
-                                    <span class="price-label">企業支援（家族手当活用）</span>
-                                    <span class="price-value" id="family-support">¥150,000〜200,000</span>
-                                </div>
-                                <div class="final-price">
-                                    <span class="price-label">あなたの負担額</span>
-                                    <span class="price-value" id="family-final">¥280,000〜330,000</span>
-                                </div>
-                            </div>
-                            
-                            <div class="savings-highlight">
-                                <div class="savings-icon">💰</div>
-                                <div class="savings-text">
-                                    <span class="savings-amount" id="family-savings">¥370,000</span>
-                                    <span class="savings-label">もお得！</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="plan-includes">
-                            <h4>プランに含まれるもの</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> 往復航空券（エコノミークラス）</li>
-                                <li><i class="fas fa-check"></i> ファミリールーム6泊</li>
-                                <li><i class="fas fa-check"></i> 朝食付き（キッズメニュー含む）</li>
-                                <li><i class="fas fa-check"></i> 空港送迎</li>
-                                <li><i class="fas fa-check"></i> キッズ向けアクティビティ（2回分）</li>
-                                <li><i class="fas fa-check"></i> 水族館・動物園入場券</li>
-                                <li><i class="fas fa-check"></i> ファミリー向けレストラン予約</li>
-                                <li><i class="fas fa-check"></i> 旅行保険（家族割引適用）</li>
-                            </ul>
-                        </div>
-                        
-                        <button class="btn btn-primary btn-large" onclick="openBookingForm('family')">
-                            <i class="fas fa-calendar-check"></i>
-                            予約・相談する
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- お得プラン -->
-            <div id="budget-plan" class="plan-detail" style="display: none;">
-                <div class="plan-header">
-                    <h2 class="plan-title hawaii-text">コスパ最高！お得プラン</h2>
-                    <p class="plan-subtitle">リーズナブルな価格でハワイを満喫</p>
-                </div>
-                
-                <div class="plan-content">
-                    <div class="plan-image">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="ハワイビーチ">
-                    </div>
-                    
-                    <div class="plan-info">
-                        <div class="plan-highlights">
-                            <div class="highlight-item">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>4泊6日</span>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-hotel"></i>
-                                <span>格安ホテル</span>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-bus"></i>
-                                <span>公共交通機関</span>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-map"></i>
-                                <span>自由行動中心</span>
-                            </div>
-                        </div>
-                        
-                        <div class="pricing-info">
-                            <div class="participants-selector">
-                                <label for="budget-participants">参加人数を選択してください</label>
-                                <select id="budget-participants" onchange="updateBudgetPrice()">
-                                    <option value="2">2名</option>
-                                    <option value="3">3名</option>
-                                    <option value="4">4名</option>
-                                </select>
-                            </div>
-                            
-                            <div class="price-breakdown">
-                                <div class="price-item">
-                                    <span class="price-label">通常価格（個人申し込み）</span>
-                                    <span class="price-value" id="budget-original">¥320,000</span>
-                                </div>
-                                <div class="price-item">
-                                    <span class="price-label">企業割引価格</span>
-                                    <span class="price-value" id="budget-discounted">¥240,000</span>
-                                </div>
-                                <div class="price-item company-support">
-                                    <span class="price-label">企業支援（福利厚生活用）</span>
-                                    <span class="price-value" id="budget-support">¥80,000〜120,000</span>
-                                </div>
-                                <div class="final-price">
-                                    <span class="price-label">あなたの負担額</span>
-                                    <span class="price-value" id="budget-final">¥120,000〜160,000</span>
-                                </div>
-                            </div>
-                            
-                            <div class="savings-highlight">
-                                <div class="savings-icon">💰</div>
-                                <div class="savings-text">
-                                    <span class="savings-amount" id="budget-savings">¥200,000</span>
-                                    <span class="savings-label">もお得！</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="plan-includes">
-                            <h4>プランに含まれるもの</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> 往復航空券（エコノミークラス）</li>
-                                <li><i class="fas fa-check"></i> 格安ホテル4泊</li>
-                                <li><i class="fas fa-check"></i> 朝食付き</li>
-                                <li><i class="fas fa-check"></i> 空港送迎（バス）</li>
-                                <li><i class="fas fa-check"></i> 市内観光バス1日券</li>
-                                <li><i class="fas fa-check"></i> ビーチアクティビティ（1回分）</li>
-                                <li><i class="fas fa-check"></i> 基本旅行保険</li>
-                            </ul>
-                        </div>
-                        
-                        <button class="btn btn-primary btn-large" onclick="openBookingForm('budget')">
-                            <i class="fas fa-calendar-check"></i>
-                            予約・相談する
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ラグジュアリープラン -->
-            <div id="luxury-plan" class="plan-detail" style="display: none;">
-                <div class="plan-header">
-                    <h2 class="plan-title hawaii-text">最高級ラグジュアリープラン</h2>
-                    <p class="plan-subtitle">贅沢の極み、ハワイでの特別な体験</p>
+                    <h2 class="plan-title hawaii-text">デラックスプラン - 究極のセカンドハネムーン</h2>
+                    <p class="plan-subtitle">8泊10日・ファーストクラスで最高級の旅を</p>
                 </div>
                 
                 <div class="plan-content">
@@ -825,46 +642,45 @@
                             </div>
                             <div class="highlight-item">
                                 <i class="fas fa-crown"></i>
-                                <span>最高級ホテル</span>
+                                <span>最高級リゾート</span>
                             </div>
                             <div class="highlight-item">
                                 <i class="fas fa-concierge-bell"></i>
-                                <span>専属コンシェルジュ</span>
+                                <span>プライベートツアー</span>
                             </div>
                         </div>
                         
                         <div class="pricing-info">
                             <div class="participants-selector">
-                                <label for="luxury-participants">参加人数を選択してください</label>
-                                <select id="luxury-participants" onchange="updateLuxuryPrice()">
+                                <label for="second-honeymoon-deluxe-participants">参加人数を選択してください</label>
+                                <select id="second-honeymoon-deluxe-participants" onchange="updateSecondHoneymoonDeluxePrice()">
                                     <option value="2">2名</option>
-                                    <option value="4">4名</option>
                                 </select>
                             </div>
                             
                             <div class="price-breakdown">
                                 <div class="price-item">
                                     <span class="price-label">通常価格（個人申し込み）</span>
-                                    <span class="price-value" id="luxury-original">¥1,200,000</span>
+                                    <span class="price-value" id="second-honeymoon-deluxe-original">¥1,200,000</span>
                                 </div>
                                 <div class="price-item">
                                     <span class="price-label">企業割引価格</span>
-                                    <span class="price-value" id="luxury-discounted">¥900,000</span>
+                                    <span class="price-value" id="second-honeymoon-deluxe-discounted">¥900,000</span>
                                 </div>
                                 <div class="price-item company-support">
-                                    <span class="price-label">企業支援（特別制度活用）</span>
-                                    <span class="price-value" id="luxury-support">¥300,000〜400,000</span>
+                                    <span class="price-label">企業支援（退職金制度活用）</span>
+                                    <span class="price-value" id="second-honeymoon-deluxe-support">¥300,000〜400,000</span>
                                 </div>
                                 <div class="final-price">
                                     <span class="price-label">あなたの負担額</span>
-                                    <span class="price-value" id="luxury-final">¥500,000〜600,000</span>
+                                    <span class="price-value" id="second-honeymoon-deluxe-final">¥500,000〜600,000</span>
                                 </div>
                             </div>
                             
                             <div class="savings-highlight">
                                 <div class="savings-icon">💰</div>
                                 <div class="savings-text">
-                                    <span class="savings-amount" id="luxury-savings">¥700,000</span>
+                                    <span class="savings-amount" id="second-honeymoon-deluxe-savings">¥700,000</span>
                                     <span class="savings-label">もお得！</span>
                                 </div>
                             </div>
@@ -877,14 +693,14 @@
                                 <li><i class="fas fa-check"></i> 最高級リゾートホテル8泊</li>
                                 <li><i class="fas fa-check"></i> 全食事付き（高級レストラン）</li>
                                 <li><i class="fas fa-check"></i> 空港送迎（リムジン）</li>
-                                <li><i class="fas fa-check"></i> 専属コンシェルジュサービス</li>
                                 <li><i class="fas fa-check"></i> プライベートツアー（3回分）</li>
                                 <li><i class="fas fa-check"></i> スパ・マッサージ（2回分）</li>
+                                <li><i class="fas fa-check"></i> 専属コンシェルジュサービス</li>
                                 <li><i class="fas fa-check"></i> プレミアム旅行保険</li>
                             </ul>
                         </div>
                         
-                        <button class="btn btn-primary btn-large" onclick="openBookingForm('luxury')">
+                        <button class="btn btn-primary btn-large" onclick="openBookingForm('second-honeymoon-deluxe')">
                             <i class="fas fa-calendar-check"></i>
                             予約・相談する
                         </button>
@@ -892,71 +708,69 @@
                 </div>
             </div>
             
-            <!-- アドベンチャープラン -->
-            <div id="adventure-plan" class="plan-detail" style="display: none;">
+            <!-- セカンドハネムーンウェルネスプラン -->
+            <div id="second-honeymoon-wellness-plan" class="plan-detail" style="display: none;">
                 <div class="plan-header">
-                    <h2 class="plan-title hawaii-text">アクティブアドベンチャープラン</h2>
-                    <p class="plan-subtitle">ハワイの大自然を満喫するアクティブな旅</p>
+                    <h2 class="plan-title hawaii-text">ウェルネスプラン - 健康重視のセカンドハネムーン</h2>
+                    <p class="plan-subtitle">9泊11日・健康と癒しを重視した特別な旅を</p>
                 </div>
                 
                 <div class="plan-content">
                     <div class="plan-image">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="ハワイアドベンチャー">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="ハワイウェルネス">
                     </div>
                     
                     <div class="plan-info">
                         <div class="plan-highlights">
                             <div class="highlight-item">
                                 <i class="fas fa-calendar-alt"></i>
-                                <span>5泊7日</span>
+                                <span>9泊11日</span>
                             </div>
                             <div class="highlight-item">
-                                <i class="fas fa-mountain"></i>
-                                <span>ハイキング・トレッキング</span>
+                                <i class="fas fa-spa"></i>
+                                <span>スパ・マッサージ</span>
                             </div>
                             <div class="highlight-item">
-                                <i class="fas fa-swimmer"></i>
-                                <span>マリンスポーツ</span>
+                                <i class="fas fa-heart"></i>
+                                <span>健康プログラム</span>
                             </div>
                             <div class="highlight-item">
-                                <i class="fas fa-camera"></i>
-                                <span>フォトツアー</span>
+                                <i class="fas fa-leaf"></i>
+                                <span>オーガニック料理</span>
                             </div>
                         </div>
                         
                         <div class="pricing-info">
                             <div class="participants-selector">
-                                <label for="adventure-participants">参加人数を選択してください</label>
-                                <select id="adventure-participants" onchange="updateAdventurePrice()">
+                                <label for="second-honeymoon-wellness-participants">参加人数を選択してください</label>
+                                <select id="second-honeymoon-wellness-participants" onchange="updateSecondHoneymoonWellnessPrice()">
                                     <option value="2">2名</option>
-                                    <option value="4">4名</option>
-                                    <option value="6">6名</option>
                                 </select>
                             </div>
                             
                             <div class="price-breakdown">
                                 <div class="price-item">
                                     <span class="price-label">通常価格（個人申し込み）</span>
-                                    <span class="price-value" id="adventure-original">¥550,000</span>
+                                    <span class="price-value" id="second-honeymoon-wellness-original">¥1,100,000</span>
                                 </div>
                                 <div class="price-item">
                                     <span class="price-label">企業割引価格</span>
-                                    <span class="price-value" id="adventure-discounted">¥420,000</span>
+                                    <span class="price-value" id="second-honeymoon-wellness-discounted">¥850,000</span>
                                 </div>
                                 <div class="price-item company-support">
                                     <span class="price-label">企業支援（健康促進制度活用）</span>
-                                    <span class="price-value" id="adventure-support">¥150,000〜200,000</span>
+                                    <span class="price-value" id="second-honeymoon-wellness-support">¥250,000〜350,000</span>
                                 </div>
                                 <div class="final-price">
                                     <span class="price-label">あなたの負担額</span>
-                                    <span class="price-value" id="adventure-final">¥220,000〜270,000</span>
+                                    <span class="price-value" id="second-honeymoon-wellness-final">¥450,000〜600,000</span>
                                 </div>
                             </div>
                             
                             <div class="savings-highlight">
                                 <div class="savings-icon">💰</div>
                                 <div class="savings-text">
-                                    <span class="savings-amount" id="adventure-savings">¥330,000</span>
+                                    <span class="savings-amount" id="second-honeymoon-wellness-savings">¥650,000</span>
                                     <span class="savings-label">もお得！</span>
                                 </div>
                             </div>
@@ -965,18 +779,18 @@
                         <div class="plan-includes">
                             <h4>プランに含まれるもの</h4>
                             <ul>
-                                <li><i class="fas fa-check"></i> 往復航空券（エコノミークラス）</li>
-                                <li><i class="fas fa-check"></i> アクティブ向けホテル5泊</li>
-                                <li><i class="fas fa-check"></i> 朝食付き</li>
-                                <li><i class="fas fa-check"></i> 空港送迎</li>
-                                <li><i class="fas fa-check"></i> ハイキングツアー（2回分）</li>
-                                <li><i class="fas fa-check"></i> マリンスポーツ体験（3回分）</li>
-                                <li><i class="fas fa-check"></i> フォトツアー（1回分）</li>
-                                <li><i class="fas fa-check"></i> アクティビティ保険</li>
+                                <li><i class="fas fa-check"></i> 往復航空券（ビジネスクラス）</li>
+                                <li><i class="fas fa-check"></i> ウェルネスリゾートホテル9泊</li>
+                                <li><i class="fas fa-check"></i> オーガニック料理（全食事付き）</li>
+                                <li><i class="fas fa-check"></i> 空港送迎（リムジン）</li>
+                                <li><i class="fas fa-check"></i> スパ・マッサージ（5回分）</li>
+                                <li><i class="fas fa-check"></i> ヨガ・瞑想プログラム</li>
+                                <li><i class="fas fa-check"></i> 健康診断・カウンセリング</li>
+                                <li><i class="fas fa-check"></i> プレミアム旅行保険</li>
                             </ul>
                         </div>
                         
-                        <button class="btn btn-primary btn-large" onclick="openBookingForm('adventure')">
+                        <button class="btn btn-primary btn-large" onclick="openBookingForm('second-honeymoon-wellness')">
                             <i class="fas fa-calendar-check"></i>
                             予約・相談する
                         </button>
@@ -1048,8 +862,16 @@
                         <label for="plan-type">プランタイプ</label>
                         <select id="plan-type" required>
                             <option value="">選択してください</option>
-                            <option value="honeymoon">憧れのハネムーン in HAWAII</option>
-                            <option value="second-honeymoon">人生第二章、思い出再発見の旅</option>
+                            <optgroup label="新婚旅行プラン">
+                                <option value="honeymoon-standard">スタンダードプラン - 憧れのハネムーン</option>
+                                <option value="honeymoon-premium">プレミアムプラン - 特別なハネムーン</option>
+                                <option value="honeymoon-luxury">ラグジュアリープラン - 最高級ハネムーン</option>
+                            </optgroup>
+                            <optgroup label="セカンドハネムーンプラン">
+                                <option value="second-honeymoon-comfort">コンフォートプラン - 人生第二章</option>
+                                <option value="second-honeymoon-deluxe">デラックスプラン - 究極のセカンドハネムーン</option>
+                                <option value="second-honeymoon-wellness">ウェルネスプラン - 健康重視</option>
+                            </optgroup>
                         </select>
                     </div>
                     

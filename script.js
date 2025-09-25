@@ -572,6 +572,30 @@ function updateSecondHoneymoonComfortPrice() {
     }
 }
 
+function updateSecondHoneymoonDeluxePrice() {
+    const participants = parseInt(document.getElementById('second-honeymoon-deluxe-participants').value);
+    const prices = calculatePrice('second-honeymoon-deluxe', participants);
+    
+    if (prices) {
+        document.getElementById('second-honeymoon-deluxe-original').textContent = `¥${prices.original.toLocaleString()}`;
+        document.getElementById('second-honeymoon-deluxe-discounted').textContent = `¥${prices.discounted.toLocaleString()}`;
+        document.getElementById('second-honeymoon-deluxe-final').textContent = `¥${prices.final.toLocaleString()}`;
+        document.getElementById('second-honeymoon-deluxe-savings').textContent = `¥${(prices.original - prices.final).toLocaleString()}`;
+    }
+}
+
+function updateSecondHoneymoonWellnessPrice() {
+    const participants = parseInt(document.getElementById('second-honeymoon-wellness-participants').value);
+    const prices = calculatePrice('second-honeymoon-wellness', participants);
+    
+    if (prices) {
+        document.getElementById('second-honeymoon-wellness-original').textContent = `¥${prices.original.toLocaleString()}`;
+        document.getElementById('second-honeymoon-wellness-discounted').textContent = `¥${prices.discounted.toLocaleString()}`;
+        document.getElementById('second-honeymoon-wellness-final').textContent = `¥${prices.final.toLocaleString()}`;
+        document.getElementById('second-honeymoon-wellness-savings').textContent = `¥${(prices.original - prices.final).toLocaleString()}`;
+    }
+}
+
 // 後方互換性のための関数
 function updateHoneymoonPrice() {
     updateHoneymoonStandardPrice();
