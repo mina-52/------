@@ -424,53 +424,57 @@ function showSuccessMessage() {
 }
 
 // 価格計算機能
-function calculatePrice(planType, participants) {
+function calculatePrice(planType, participants, priceType = 'company') {
     const prices = {
-        // 新婚旅行プラン
+        // 新婚旅行プラン（2名分の価格）
         'honeymoon-standard': {
-            original: 450000,
-            discounted: 320000,
-            companySupport: 100000
+            regular: 700000,      // 通常価格（2名分）
+            company: 630000,      // 企業割引価格（2名分）
+            companySupport: 150000 // 企業支援額
         },
         'honeymoon-premium': {
-            original: 650000,
-            discounted: 520000,
-            companySupport: 150000
+            regular: 850000,      // 通常価格（2名分）
+            company: 765000,      // 企業割引価格（2名分）
+            companySupport: 200000 // 企業支援額
         },
         'honeymoon-luxury': {
-            original: 950000,
-            discounted: 760000,
-            companySupport: 200000
+            regular: 1000000,     // 通常価格（2名分）
+            company: 900000,      // 企業割引価格（2名分）
+            companySupport: 250000 // 企業支援額
         },
-        // セカンドハネムーンプラン
+        // セカンドハネムーンプラン（2名分の価格）
         'second-honeymoon-comfort': {
-            original: 850000,
-            discounted: 650000,
-            companySupport: 200000
+            regular: 600000,      // 通常価格（2名分）
+            company: 540000,      // 企業割引価格（2名分）
+            companySupport: 120000 // 企業支援額
         },
         'second-honeymoon-deluxe': {
-            original: 1200000,
-            discounted: 900000,
-            companySupport: 300000
+            regular: 1200000,     // 通常価格（2名分）
+            company: 1080000,     // 企業割引価格（2名分）
+            companySupport: 300000 // 企業支援額
         },
         'second-honeymoon-wellness': {
-            original: 1100000,
-            discounted: 850000,
-            companySupport: 250000
+            regular: 1400000,     // 通常価格（2名分）
+            company: 1260000,     // 企業割引価格（2名分）
+            companySupport: 350000 // 企業支援額
         }
     };
     
     const plan = prices[planType];
     if (!plan) return null;
     
-    const totalPrice = plan.discounted * participants;
-    const finalPrice = totalPrice - plan.companySupport;
+    // 参加人数に応じた価格計算（2名基準）
+    const basePrice = plan[priceType];
+    const totalPrice = Math.round(basePrice * (participants / 2));
+    const companySupport = Math.round(plan.companySupport * (participants / 2));
+    const finalPrice = Math.max(totalPrice - companySupport, 0);
     
     return {
-        original: plan.original * participants,
-        discounted: totalPrice,
-        companySupport: plan.companySupport,
-        final: Math.max(finalPrice, 0)
+        regular: Math.round(plan.regular * (participants / 2)),
+        company: totalPrice,
+        companySupport: companySupport,
+        final: finalPrice,
+        savings: Math.round(plan.regular * (participants / 2)) - finalPrice
     };
 }
 
@@ -523,77 +527,89 @@ function updatePriceDisplay(planType, participants = 2) {
     });
 }
 
-// 各プランの価格更新関数
-function updateHoneymoonStandardPrice() {
-    const participants = parseInt(document.getElementById('honeymoon-participants').value);
-    const prices = calculatePrice('honeymoon-standard', participants);
+// 価格タイプ選択機能
+function selectPriceType(planType, priceType) {
+    // 現在のプランの価格タイプボタンのアクティブ状態を更新
+    const currentButtons = document.querySelectorAll(`[onclick*="${planType}"]`);
+    currentButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-price-type') === priceType) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // 価格表示を更新
+    updatePlanPrice(planType, priceType);
+}
+
+// プラン価格更新関数
+function updatePlanPrice(planType, priceType = 'company') {
+    const participants = parseInt(document.getElementById(`${planType}-participants`).value);
+    const prices = calculatePrice(planType, participants, priceType);
     
     if (prices) {
-        document.getElementById('honeymoon-original').textContent = `¥${prices.original.toLocaleString()}`;
-        document.getElementById('honeymoon-discounted').textContent = `¥${prices.discounted.toLocaleString()}`;
-        document.getElementById('honeymoon-final').textContent = `¥${prices.final.toLocaleString()}`;
-        document.getElementById('honeymoon-savings').textContent = `¥${(prices.original - prices.final).toLocaleString()}`;
+        // 通常価格
+        document.getElementById(`${planType}-regular`).textContent = `¥${prices.regular.toLocaleString()}`;
+        
+        // 企業割引価格（企業割引選択時のみ表示）
+        const companyItem = document.getElementById(`${planType}-company-item`);
+        const companyPrice = document.getElementById(`${planType}-company`);
+        const supportItem = document.getElementById(`${planType}-support-item`);
+        const supportPrice = document.getElementById(`${planType}-support`);
+        const savingsHighlight = document.getElementById(`${planType}-savings-highlight`);
+        
+        if (priceType === 'company') {
+            companyItem.style.display = 'flex';
+            supportItem.style.display = 'flex';
+            savingsHighlight.style.display = 'flex';
+            companyPrice.textContent = `¥${prices.company.toLocaleString()}`;
+            supportPrice.textContent = `¥${prices.companySupport.toLocaleString()}`;
+            document.getElementById(`${planType}-final`).textContent = `¥${prices.final.toLocaleString()}`;
+            document.getElementById(`${planType}-savings`).textContent = `¥${prices.savings.toLocaleString()}`;
+        } else {
+            companyItem.style.display = 'none';
+            supportItem.style.display = 'none';
+            savingsHighlight.style.display = 'none';
+            document.getElementById(`${planType}-final`).textContent = `¥${prices.regular.toLocaleString()}`;
+        }
     }
+}
+
+// 各プランの価格更新関数
+function updateHoneymoonStandardPrice() {
+    const activeButton = document.querySelector('[onclick*="honeymoon"][data-price-type].active');
+    const priceType = activeButton ? activeButton.getAttribute('data-price-type') : 'company';
+    updatePlanPrice('honeymoon', priceType);
 }
 
 function updateHoneymoonPremiumPrice() {
-    const participants = parseInt(document.getElementById('honeymoon-premium-participants').value);
-    const prices = calculatePrice('honeymoon-premium', participants);
-    
-    if (prices) {
-        document.getElementById('honeymoon-premium-original').textContent = `¥${prices.original.toLocaleString()}`;
-        document.getElementById('honeymoon-premium-discounted').textContent = `¥${prices.discounted.toLocaleString()}`;
-        document.getElementById('honeymoon-premium-final').textContent = `¥${prices.final.toLocaleString()}`;
-        document.getElementById('honeymoon-premium-savings').textContent = `¥${(prices.original - prices.final).toLocaleString()}`;
-    }
+    const activeButton = document.querySelector('[onclick*="honeymoon-premium"][data-price-type].active');
+    const priceType = activeButton ? activeButton.getAttribute('data-price-type') : 'company';
+    updatePlanPrice('honeymoon-premium', priceType);
 }
 
 function updateHoneymoonLuxuryPrice() {
-    const participants = parseInt(document.getElementById('honeymoon-luxury-participants').value);
-    const prices = calculatePrice('honeymoon-luxury', participants);
-    
-    if (prices) {
-        document.getElementById('honeymoon-luxury-original').textContent = `¥${prices.original.toLocaleString()}`;
-        document.getElementById('honeymoon-luxury-discounted').textContent = `¥${prices.discounted.toLocaleString()}`;
-        document.getElementById('honeymoon-luxury-final').textContent = `¥${prices.final.toLocaleString()}`;
-        document.getElementById('honeymoon-luxury-savings').textContent = `¥${(prices.original - prices.final).toLocaleString()}`;
-    }
+    const activeButton = document.querySelector('[onclick*="honeymoon-luxury"][data-price-type].active');
+    const priceType = activeButton ? activeButton.getAttribute('data-price-type') : 'company';
+    updatePlanPrice('honeymoon-luxury', priceType);
 }
 
 function updateSecondHoneymoonComfortPrice() {
-    const participants = parseInt(document.getElementById('second-honeymoon-participants').value);
-    const prices = calculatePrice('second-honeymoon-comfort', participants);
-    
-    if (prices) {
-        document.getElementById('second-honeymoon-original').textContent = `¥${prices.original.toLocaleString()}`;
-        document.getElementById('second-honeymoon-discounted').textContent = `¥${prices.discounted.toLocaleString()}`;
-        document.getElementById('second-honeymoon-final').textContent = `¥${prices.final.toLocaleString()}`;
-        document.getElementById('second-honeymoon-savings').textContent = `¥${(prices.original - prices.final).toLocaleString()}`;
-    }
+    const activeButton = document.querySelector('[onclick*="second-honeymoon-comfort"][data-price-type].active');
+    const priceType = activeButton ? activeButton.getAttribute('data-price-type') : 'company';
+    updatePlanPrice('second-honeymoon-comfort', priceType);
 }
 
 function updateSecondHoneymoonDeluxePrice() {
-    const participants = parseInt(document.getElementById('second-honeymoon-deluxe-participants').value);
-    const prices = calculatePrice('second-honeymoon-deluxe', participants);
-    
-    if (prices) {
-        document.getElementById('second-honeymoon-deluxe-original').textContent = `¥${prices.original.toLocaleString()}`;
-        document.getElementById('second-honeymoon-deluxe-discounted').textContent = `¥${prices.discounted.toLocaleString()}`;
-        document.getElementById('second-honeymoon-deluxe-final').textContent = `¥${prices.final.toLocaleString()}`;
-        document.getElementById('second-honeymoon-deluxe-savings').textContent = `¥${(prices.original - prices.final).toLocaleString()}`;
-    }
+    const activeButton = document.querySelector('[onclick*="second-honeymoon-deluxe"][data-price-type].active');
+    const priceType = activeButton ? activeButton.getAttribute('data-price-type') : 'company';
+    updatePlanPrice('second-honeymoon-deluxe', priceType);
 }
 
 function updateSecondHoneymoonWellnessPrice() {
-    const participants = parseInt(document.getElementById('second-honeymoon-wellness-participants').value);
-    const prices = calculatePrice('second-honeymoon-wellness', participants);
-    
-    if (prices) {
-        document.getElementById('second-honeymoon-wellness-original').textContent = `¥${prices.original.toLocaleString()}`;
-        document.getElementById('second-honeymoon-wellness-discounted').textContent = `¥${prices.discounted.toLocaleString()}`;
-        document.getElementById('second-honeymoon-wellness-final').textContent = `¥${prices.final.toLocaleString()}`;
-        document.getElementById('second-honeymoon-wellness-savings').textContent = `¥${(prices.original - prices.final).toLocaleString()}`;
-    }
+    const activeButton = document.querySelector('[onclick*="second-honeymoon-wellness"][data-price-type].active');
+    const priceType = activeButton ? activeButton.getAttribute('data-price-type') : 'company';
+    updatePlanPrice('second-honeymoon-wellness', priceType);
 }
 
 // 後方互換性のための関数

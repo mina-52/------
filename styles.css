@@ -826,6 +826,63 @@ body::before {
     color: var(--text-dark);
 }
 
+/* 価格タイプ選択 */
+.price-type-selector {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--background-light);
+    border-radius: var(--border-radius);
+    border: 2px solid var(--white);
+}
+
+.price-type-selector label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.price-type-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.price-type-btn {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--white);
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.price-type-btn:hover {
+    border-color: var(--primary-color);
+    background: var(--background-light);
+    transform: translateY(-2px);
+}
+
+.price-type-btn.active {
+    border-color: var(--primary-color);
+    background: var(--gradient-sunset);
+    color: var(--white);
+    box-shadow: var(--shadow-light);
+    transform: translateY(-2px);
+}
+
+.price-type-btn i {
+    font-size: 1.1rem;
+}
+
 /* 参加人数選択 */
 .participants-selector {
     margin-bottom: 2rem;

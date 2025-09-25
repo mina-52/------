@@ -78,7 +78,7 @@
                             <p>一生に一度の特別な旅を、企業のボーナス制度を活用して実現</p>
                         </div>
                         <div class="main-tab-price">
-                            <span class="price-range">¥170,000〜220,000</span>
+                            <span class="price-range">¥480,000〜650,000</span>
                             <span class="price-note">あなたの負担額</span>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                             <p>人生第二章の贅沢な旅を、退職金制度を活用して実現</p>
                         </div>
                         <div class="main-tab-price">
-                            <span class="price-range">¥350,000〜450,000</span>
+                            <span class="price-range">¥420,000〜1,050,000</span>
                             <span class="price-note">あなたの負担額</span>
                         </div>
                     </div>
@@ -114,8 +114,8 @@
                                 <span class="feature-tag">朝食付き</span>
                             </div>
                             <div class="sub-tab-price">
-                                <span class="original-price">¥450,000</span>
-                                <span class="company-price">¥170,000〜</span>
+                                <span class="original-price">¥700,000</span>
+                                <span class="company-price">¥480,000〜</span>
                             </div>
                         </div>
                     </button>
@@ -130,8 +130,8 @@
                                 <span class="feature-tag">全食事付き</span>
                             </div>
                             <div class="sub-tab-price">
-                                <span class="original-price">¥650,000</span>
-                                <span class="company-price">¥250,000〜</span>
+                                <span class="original-price">¥850,000</span>
+                                <span class="company-price">¥565,000〜</span>
                             </div>
                         </div>
                     </button>
@@ -146,8 +146,8 @@
                                 <span class="feature-tag">専属コンシェルジュ</span>
                             </div>
                             <div class="sub-tab-price">
-                                <span class="original-price">¥950,000</span>
-                                <span class="company-price">¥380,000〜</span>
+                                <span class="original-price">¥1,000,000</span>
+                                <span class="company-price">¥650,000〜</span>
                             </div>
                         </div>
                     </button>
@@ -167,8 +167,8 @@
                                 <span class="feature-tag">ゴルフ体験</span>
                             </div>
                             <div class="sub-tab-price">
-                                <span class="original-price">¥850,000</span>
-                                <span class="company-price">¥350,000〜</span>
+                                <span class="original-price">¥600,000</span>
+                                <span class="company-price">¥420,000〜</span>
                             </div>
                         </div>
                     </button>
@@ -184,7 +184,7 @@
                             </div>
                             <div class="sub-tab-price">
                                 <span class="original-price">¥1,200,000</span>
-                                <span class="company-price">¥500,000〜</span>
+                                <span class="company-price">¥780,000〜</span>
                             </div>
                         </div>
                     </button>
@@ -199,8 +199,8 @@
                                 <span class="feature-tag">健康プログラム</span>
                             </div>
                             <div class="sub-tab-price">
-                                <span class="original-price">¥1,100,000</span>
-                                <span class="company-price">¥450,000〜</span>
+                                <span class="original-price">¥1,400,000</span>
+                                <span class="price-range">¥1,050,000〜</span>
                             </div>
                         </div>
                     </button>
@@ -288,6 +288,20 @@
                         </div>
                         
                         <div class="pricing-info">
+                            <div class="price-type-selector">
+                                <label>価格タイプを選択してください</label>
+                                <div class="price-type-buttons">
+                                    <button class="price-type-btn active" onclick="selectPriceType('honeymoon', 'company')" data-price-type="company">
+                                        <i class="fas fa-building"></i>
+                                        企業割引価格
+                                    </button>
+                                    <button class="price-type-btn" onclick="selectPriceType('honeymoon', 'regular')" data-price-type="regular">
+                                        <i class="fas fa-user"></i>
+                                        通常価格
+                                    </button>
+                                </div>
+                            </div>
+                            
                             <div class="participants-selector">
                                 <label for="honeymoon-participants">参加人数を選択してください</label>
                                 <select id="honeymoon-participants" onchange="updateHoneymoonPrice()">
@@ -300,26 +314,26 @@
                             <div class="price-breakdown">
                                 <div class="price-item">
                                     <span class="price-label">通常価格（個人申し込み）</span>
-                                    <span class="price-value" id="honeymoon-original">¥450,000</span>
+                                    <span class="price-value" id="honeymoon-regular">¥700,000</span>
                                 </div>
-                                <div class="price-item">
+                                <div class="price-item company-price" id="honeymoon-company-item">
                                     <span class="price-label">企業割引価格</span>
-                                    <span class="price-value" id="honeymoon-discounted">¥320,000</span>
+                                    <span class="price-value" id="honeymoon-company">¥630,000</span>
                                 </div>
-                                <div class="price-item company-support">
+                                <div class="price-item company-support" id="honeymoon-support-item">
                                     <span class="price-label">企業支援（ボーナス制度活用）</span>
-                                    <span class="price-value" id="honeymoon-support">¥100,000〜150,000</span>
+                                    <span class="price-value" id="honeymoon-support">¥150,000</span>
                                 </div>
                                 <div class="final-price">
                                     <span class="price-label">あなたの負担額</span>
-                                    <span class="price-value" id="honeymoon-final">¥170,000〜220,000</span>
+                                    <span class="price-value" id="honeymoon-final">¥480,000</span>
                                 </div>
                             </div>
                             
-                            <div class="savings-highlight">
+                            <div class="savings-highlight" id="honeymoon-savings-highlight">
                                 <div class="savings-icon">💰</div>
                                 <div class="savings-text">
-                                    <span class="savings-amount" id="honeymoon-savings">¥280,000</span>
+                                    <span class="savings-amount" id="honeymoon-savings">¥220,000</span>
                                     <span class="savings-label">もお得！</span>
                                 </div>
                             </div>
@@ -379,6 +393,20 @@
                         </div>
                         
                         <div class="pricing-info">
+                            <div class="price-type-selector">
+                                <label>価格タイプを選択してください</label>
+                                <div class="price-type-buttons">
+                                    <button class="price-type-btn active" onclick="selectPriceType('honeymoon-premium', 'company')" data-price-type="company">
+                                        <i class="fas fa-building"></i>
+                                        企業割引価格
+                                    </button>
+                                    <button class="price-type-btn" onclick="selectPriceType('honeymoon-premium', 'regular')" data-price-type="regular">
+                                        <i class="fas fa-user"></i>
+                                        通常価格
+                                    </button>
+                                </div>
+                            </div>
+                            
                             <div class="participants-selector">
                                 <label for="honeymoon-premium-participants">参加人数を選択してください</label>
                                 <select id="honeymoon-premium-participants" onchange="updateHoneymoonPremiumPrice()">
@@ -390,26 +418,26 @@
                             <div class="price-breakdown">
                                 <div class="price-item">
                                     <span class="price-label">通常価格（個人申し込み）</span>
-                                    <span class="price-value" id="honeymoon-premium-original">¥650,000</span>
+                                    <span class="price-value" id="honeymoon-premium-regular">¥850,000</span>
                                 </div>
-                                <div class="price-item">
+                                <div class="price-item company-price" id="honeymoon-premium-company-item">
                                     <span class="price-label">企業割引価格</span>
-                                    <span class="price-value" id="honeymoon-premium-discounted">¥520,000</span>
+                                    <span class="price-value" id="honeymoon-premium-company">¥765,000</span>
                                 </div>
-                                <div class="price-item company-support">
+                                <div class="price-item company-support" id="honeymoon-premium-support-item">
                                     <span class="price-label">企業支援（ボーナス制度活用）</span>
-                                    <span class="price-value" id="honeymoon-premium-support">¥150,000〜200,000</span>
+                                    <span class="price-value" id="honeymoon-premium-support">¥200,000</span>
                                 </div>
                                 <div class="final-price">
                                     <span class="price-label">あなたの負担額</span>
-                                    <span class="price-value" id="honeymoon-premium-final">¥250,000〜320,000</span>
+                                    <span class="price-value" id="honeymoon-premium-final">¥565,000</span>
                                 </div>
                             </div>
                             
-                            <div class="savings-highlight">
+                            <div class="savings-highlight" id="honeymoon-premium-savings-highlight">
                                 <div class="savings-icon">💰</div>
                                 <div class="savings-text">
-                                    <span class="savings-amount" id="honeymoon-premium-savings">¥400,000</span>
+                                    <span class="savings-amount" id="honeymoon-premium-savings">¥285,000</span>
                                     <span class="savings-label">もお得！</span>
                                 </div>
                             </div>
@@ -470,6 +498,20 @@
                         </div>
                         
                         <div class="pricing-info">
+                            <div class="price-type-selector">
+                                <label>価格タイプを選択してください</label>
+                                <div class="price-type-buttons">
+                                    <button class="price-type-btn active" onclick="selectPriceType('honeymoon-luxury', 'company')" data-price-type="company">
+                                        <i class="fas fa-building"></i>
+                                        企業割引価格
+                                    </button>
+                                    <button class="price-type-btn" onclick="selectPriceType('honeymoon-luxury', 'regular')" data-price-type="regular">
+                                        <i class="fas fa-user"></i>
+                                        通常価格
+                                    </button>
+                                </div>
+                            </div>
+                            
                             <div class="participants-selector">
                                 <label for="honeymoon-luxury-participants">参加人数を選択してください</label>
                                 <select id="honeymoon-luxury-participants" onchange="updateHoneymoonLuxuryPrice()">
@@ -480,26 +522,26 @@
                             <div class="price-breakdown">
                                 <div class="price-item">
                                     <span class="price-label">通常価格（個人申し込み）</span>
-                                    <span class="price-value" id="honeymoon-luxury-original">¥950,000</span>
+                                    <span class="price-value" id="honeymoon-luxury-regular">¥1,000,000</span>
                                 </div>
-                                <div class="price-item">
+                                <div class="price-item company-price" id="honeymoon-luxury-company-item">
                                     <span class="price-label">企業割引価格</span>
-                                    <span class="price-value" id="honeymoon-luxury-discounted">¥760,000</span>
+                                    <span class="price-value" id="honeymoon-luxury-company">¥900,000</span>
                                 </div>
-                                <div class="price-item company-support">
+                                <div class="price-item company-support" id="honeymoon-luxury-support-item">
                                     <span class="price-label">企業支援（特別制度活用）</span>
-                                    <span class="price-value" id="honeymoon-luxury-support">¥200,000〜250,000</span>
+                                    <span class="price-value" id="honeymoon-luxury-support">¥250,000</span>
                                 </div>
                                 <div class="final-price">
                                     <span class="price-label">あなたの負担額</span>
-                                    <span class="price-value" id="honeymoon-luxury-final">¥380,000〜510,000</span>
+                                    <span class="price-value" id="honeymoon-luxury-final">¥650,000</span>
                                 </div>
                             </div>
                             
-                            <div class="savings-highlight">
+                            <div class="savings-highlight" id="honeymoon-luxury-savings-highlight">
                                 <div class="savings-icon">💰</div>
                                 <div class="savings-text">
-                                    <span class="savings-amount" id="honeymoon-luxury-savings">¥570,000</span>
+                                    <span class="savings-amount" id="honeymoon-luxury-savings">¥350,000</span>
                                     <span class="savings-label">もお得！</span>
                                 </div>
                             </div>
@@ -560,6 +602,20 @@
                         </div>
                         
                         <div class="pricing-info">
+                            <div class="price-type-selector">
+                                <label>価格タイプを選択してください</label>
+                                <div class="price-type-buttons">
+                                    <button class="price-type-btn active" onclick="selectPriceType('second-honeymoon-comfort', 'company')" data-price-type="company">
+                                        <i class="fas fa-building"></i>
+                                        企業割引価格
+                                    </button>
+                                    <button class="price-type-btn" onclick="selectPriceType('second-honeymoon-comfort', 'regular')" data-price-type="regular">
+                                        <i class="fas fa-user"></i>
+                                        通常価格
+                                    </button>
+                                </div>
+                            </div>
+                            
                             <div class="participants-selector">
                                 <label for="second-honeymoon-participants">参加人数を選択してください</label>
                                 <select id="second-honeymoon-participants" onchange="updateSecondHoneymoonPrice()">
@@ -571,26 +627,26 @@
                             <div class="price-breakdown">
                                 <div class="price-item">
                                     <span class="price-label">通常価格（個人申し込み）</span>
-                                    <span class="price-value" id="second-honeymoon-original">¥850,000</span>
+                                    <span class="price-value" id="second-honeymoon-comfort-regular">¥600,000</span>
                                 </div>
-                                <div class="price-item">
+                                <div class="price-item company-price" id="second-honeymoon-comfort-company-item">
                                     <span class="price-label">企業割引価格</span>
-                                    <span class="price-value" id="second-honeymoon-discounted">¥650,000</span>
+                                    <span class="price-value" id="second-honeymoon-comfort-company">¥540,000</span>
                                 </div>
-                                <div class="price-item company-support">
+                                <div class="price-item company-support" id="second-honeymoon-comfort-support-item">
                                     <span class="price-label">企業支援（退職金制度活用）</span>
-                                    <span class="price-value" id="second-honeymoon-support">¥200,000〜300,000</span>
+                                    <span class="price-value" id="second-honeymoon-comfort-support">¥120,000</span>
                                 </div>
                                 <div class="final-price">
                                     <span class="price-label">あなたの負担額</span>
-                                    <span class="price-value" id="second-honeymoon-final">¥350,000〜450,000</span>
+                                    <span class="price-value" id="second-honeymoon-comfort-final">¥420,000</span>
                                 </div>
                             </div>
                             
-                            <div class="savings-highlight">
+                            <div class="savings-highlight" id="second-honeymoon-comfort-savings-highlight">
                                 <div class="savings-icon">💰</div>
                                 <div class="savings-text">
-                                    <span class="savings-amount" id="second-honeymoon-savings">¥500,000</span>
+                                    <span class="savings-amount" id="second-honeymoon-comfort-savings">¥180,000</span>
                                     <span class="savings-label">もお得！</span>
                                 </div>
                             </div>
