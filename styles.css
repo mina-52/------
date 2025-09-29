@@ -2268,6 +2268,50 @@ body::before {
         flex-direction: column;
         gap: 0.5rem;
     }
+    
+    /* 新しいセクションのレスポンシブ対応 */
+    .hero-story {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .story-connector {
+        transform: rotate(90deg);
+    }
+    
+    .scheduling-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .timeline-year {
+        min-width: auto;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .commitment-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .commitment-item {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2295,6 +2339,43 @@ body::before {
     .btn-large {
         padding: 1rem 2rem;
         font-size: 1rem;
+    }
+    
+    /* 新しいセクションの小画面対応 */
+    .hero-story {
+        padding: 1rem;
+    }
+    
+    .story-item {
+        padding: 1rem;
+    }
+    
+    .story-icon {
+        font-size: 2rem;
+    }
+    
+    .scheduling-form {
+        padding: 1.5rem;
+    }
+    
+    .step-item {
+        padding: 1.5rem;
+    }
+    
+    .timeline-item {
+        padding: 1.5rem;
+    }
+    
+    .timeline-year {
+        font-size: 1.5rem;
+    }
+    
+    .benefit-card {
+        padding: 1.5rem;
+    }
+    
+    .commitment-item {
+        padding: 1.5rem;
     }
 }
 

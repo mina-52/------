@@ -667,6 +667,14 @@ function simulateCompanyScheduling(formData) {
 
 function calculateOptimalDates(preferredDates, vacationDays) {
     // 簡易的な日程計算
+    if (!preferredDates) {
+        return {
+            startDate: '調整中',
+            endDate: '調整中',
+            duration: vacationDays + '日間'
+        };
+    }
+    
     const baseDate = new Date(preferredDates);
     const vacationLength = parseInt(vacationDays);
     
