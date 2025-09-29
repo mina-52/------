@@ -88,7 +88,7 @@ body::before {
     right: 0;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    z-index: 1000;
+    z-index: 9999;
     box-shadow: var(--shadow-light);
     transition: var(--transition);
 }
@@ -168,10 +168,12 @@ body::before {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     background: var(--gradient-ocean);
     position: relative;
     overflow: hidden;
-    padding-top: 80px;
+    padding: 100px 2rem 2rem;
+    margin-top: 0;
 }
 
 .hero::before {
@@ -211,9 +213,10 @@ body::before {
 
 .hero-content {
     flex: 1;
-    max-width: 600px;
+    max-width: 800px;
     z-index: 3;
     position: relative;
+    text-align: center;
     padding: 0 2rem;
 }
 
@@ -245,11 +248,12 @@ body::before {
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    margin: 3rem 0;
+    margin: 3rem auto;
     padding: 2rem;
     background: rgba(255, 255, 255, 0.9);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-light);
+    max-width: 700px;
 }
 
 .story-item {
@@ -297,6 +301,8 @@ body::before {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
 }
 
 .btn {
@@ -365,12 +371,15 @@ body::before {
     justify-content: center;
     align-items: center;
     z-index: 3;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .floating-elements {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
+    margin: 0 auto;
 }
 
 .floating-element {
@@ -2166,7 +2175,7 @@ body::before {
     .hero {
         flex-direction: column;
         text-align: center;
-        padding: 2rem 1rem;
+        padding: 100px 1rem 2rem;
     }
     
     .hero-title {
@@ -2241,8 +2250,8 @@ body::before {
     }
     
     .floating-elements {
-        width: 200px;
-        height: 200px;
+        width: 250px;
+        height: 250px;
     }
     
     .floating-element {
