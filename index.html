@@ -20,6 +20,7 @@
             <ul class="nav-menu">
                 <li><a href="#home">ホーム</a></li>
                 <li><a href="#plans">プラン</a></li>
+                <li><a href="#couple-scheduling">夫婦日程調整</a></li>
                 <li><a href="#about">企業連携</a></li>
                 <li><a href="#contact">お問い合わせ</a></li>
             </ul>
@@ -34,16 +35,33 @@
     <!-- メインビジュアル -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">企業福利厚生で叶える<br><span class="highlight hawaii-text">ハワイ旅行</span></h1>
-                    <p class="hero-subtitle">ボーナスや退職金制度を活用して、特別なハワイ旅行を実現しませんか？ 🌴✨</p>
+            <h1 class="hero-title">新婚旅行の続きをしに、<br><span class="highlight hawaii-text">もう一度、ハワイへ</span></h1>
+            <p class="hero-subtitle">二つの物語が、今、再び交差する場所へ 🌺<br>企業の福利厚生制度で実現する、人生の節目を祝う特別な旅</p>
+            <div class="hero-story">
+                <div class="story-item">
+                    <div class="story-icon">💕</div>
+                    <div class="story-text">
+                        <h3>新婚旅行層</h3>
+                        <p>26〜32歳・一生に一度の特別な旅</p>
+                    </div>
+                </div>
+                <div class="story-connector">→</div>
+                <div class="story-item">
+                    <div class="story-icon">💎</div>
+                    <div class="story-text">
+                        <h3>セカンドハネムーン層</h3>
+                        <p>50〜60歳・人生第二章の贅沢な旅</p>
+                    </div>
+                </div>
+            </div>
             <div class="hero-buttons">
                 <button class="btn btn-primary" onclick="scrollToSection('plans')">
-                    <i class="fas fa-plane"></i>
-                    プランを見る
+                    <i class="fas fa-heart"></i>
+                    あなたの物語を見つける
                 </button>
                 <button class="btn btn-secondary" onclick="scrollToSection('about')">
-                    <i class="fas fa-building"></i>
-                    企業連携について
+                    <i class="fas fa-handshake"></i>
+                    企業連携の仕組み
                 </button>
             </div>
         </div>
@@ -856,14 +874,104 @@
         </div>
     </section>
 
+    <!-- 夫婦日程調整セクション -->
+    <section id="couple-scheduling" class="couple-scheduling-section">
+        <div class="container">
+            <h2 class="section-title">夫婦別会社対応 🌺</h2>
+            <p class="section-subtitle">お二人が別々の会社で働いている場合も安心！企業間連携で日程調整をサポート</p>
+            
+            <div class="scheduling-content">
+                <div class="scheduling-steps">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>お二人の会社情報を登録</h3>
+                            <p>それぞれの会社の福利厚生制度を確認し、最適な支援プランを提案</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>企業間日程調整</h3>
+                            <p>両社の休暇制度を考慮し、最適な出発日を自動調整</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>統合プラン提案</h3>
+                            <p>両社の支援を組み合わせた、お得な統合プランを提案</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="scheduling-form">
+                    <h3>夫婦日程調整フォーム</h3>
+                    <form id="couple-scheduling-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="partner1-name">お名前（1人目）</label>
+                                <input type="text" id="partner1-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="partner1-company">会社名（1人目）</label>
+                                <input type="text" id="partner1-company" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="partner2-name">お名前（2人目）</label>
+                                <input type="text" id="partner2-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="partner2-company">会社名（2人目）</label>
+                                <input type="text" id="partner2-company" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="preferred-dates">希望出発日（複数選択可）</label>
+                                <input type="date" id="preferred-dates" multiple>
+                            </div>
+                            <div class="form-group">
+                                <label for="vacation-days">取得可能休暇日数</label>
+                                <select id="vacation-days" required>
+                                    <option value="">選択してください</option>
+                                    <option value="5">5日間</option>
+                                    <option value="7">7日間</option>
+                                    <option value="10">10日間</option>
+                                    <option value="14">14日間</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="special-requests">特別なご要望</label>
+                            <textarea id="special-requests" rows="3" placeholder="会社の休暇制度や特別な配慮が必要な点があればお書きください"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <i class="fas fa-calendar-check"></i>
+                            日程調整を依頼する
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 企業連携セクション -->
     <section id="about" class="about-section">
         <div class="container">
             <h2 class="section-title">企業・旅行会社連携の仕組み 🤝</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>なぜ企業と旅行会社が連携するのか？</h3>
-                    <p>この企画は、企業の福利厚生制度を活用することで、社員のエンゲージメント向上とハワイ旅行の需要喚起を同時に実現します。</p>
+                    <h3>「社員・企業・旅行会社」三者がそれぞれのメリットを享受</h3>
+                    <p>本企画は、企業の福利厚生制度を活用することで、社員のエンゲージメント向上とハワイ旅行の需要喚起を同時に実現します。単なる金銭的支援に留まらず、「会社が社員の人生の節目を大切にする」という強いメッセージを社会に発信します。</p>
                     
                     <div class="benefits">
                         <div class="benefit-item">
@@ -871,8 +979,12 @@
                                 <i class="fas fa-users"></i>
                             </div>
                             <div class="benefit-content">
-                                <h4>社員のメリット</h4>
-                                <p>金銭的・時間的な制約を気にせず、質の高いハワイ旅行を楽しめる</p>
+                                <h4>従業員にとって</h4>
+                                <ul>
+                                    <li>経済的な負担を軽減し、妥協せず理想の旅行を実現</li>
+                                    <li>制度利用により休暇取得や周囲の理解が得やすくなる</li>
+                                    <li>福利厚生への満足度向上、会社への愛着や業務意欲向上</li>
+                                </ul>
                             </div>
                         </div>
                         
@@ -881,8 +993,12 @@
                                 <i class="fas fa-chart-line"></i>
                             </div>
                             <div class="benefit-content">
-                                <h4>企業のメリット</h4>
-                                <p>従業員のモチベーション向上により離職率が低下し、企業イメージが向上</p>
+                                <h4>企業にとって</h4>
+                                <ul>
+                                    <li>充実した福利厚生で採用力向上、特に若手人材獲得に効果</li>
+                                    <li>従業員のモチベーション・生産性向上、離職率低下</li>
+                                    <li>「働きやすい企業」としてのブランド力向上、社会的評価向上</li>
+                                </ul>
                             </div>
                         </div>
                         
@@ -891,15 +1007,125 @@
                                 <i class="fas fa-handshake"></i>
                             </div>
                             <div class="benefit-content">
-                                <h4>旅行会社のメリット</h4>
-                                <p>安定した法人顧客を獲得し、長期的なリピーターを育成</p>
+                                <h4>旅行会社にとって</h4>
+                                <ul>
+                                    <li>新婚層という新たな顧客を獲得</li>
+                                    <li>ハワイはリピート率が高いため、長期的な顧客関係構築</li>
+                                    <li>安定した法人顧客基盤の確立</li>
+                                </ul>
                             </div>
                         </div>
+                    </div>
+                    
+                    <div class="future-strategy">
+                        <h3>未来戦略：20年後の再会</h3>
+                        <p>本制度の最大の強みは、社員と企業の関係を一過性ではなく長期的に結びつけられる点にあります。新婚旅行でハワイを訪れた社員が、20年後にセカンドハネムーンで再び同じ場所を訪れる。この循環を仕組みとして確立することで、ハワイを「人生の節目を祝う場」として定着させるとともに、旅行会社にとっても継続的な需要を創出できます。</p>
                     </div>
                 </div>
                 
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="企業連携">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 長期顧客関係構築セクション -->
+    <section id="long-term-relationship" class="long-term-section">
+        <div class="container">
+            <h2 class="section-title">20年後の再会を約束 🌺</h2>
+            <p class="section-subtitle">新婚旅行で訪れたハワイに、人生の第二章でもう一度訪れる</p>
+            
+            <div class="relationship-content">
+                <div class="relationship-story">
+                    <div class="story-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2024</div>
+                            <div class="timeline-content">
+                                <h3>新婚旅行</h3>
+                                <p>26〜32歳の夫婦が企業のボーナス制度を活用してハワイへ</p>
+                                <div class="timeline-icon">💕</div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-connector">
+                            <div class="connector-line"></div>
+                            <div class="connector-text">20年の時を経て</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2044</div>
+                            <div class="timeline-content">
+                                <h3>セカンドハネムーン</h3>
+                                <p>50〜60歳の夫婦が退職金制度を活用して再びハワイへ</p>
+                                <div class="timeline-icon">💎</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relationship-benefits">
+                    <h3>長期顧客関係のメリット</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">👥</div>
+                            <h4>お客様にとって</h4>
+                            <ul>
+                                <li>同じ場所での思い出の継続</li>
+                                <li>20年間の変化を実感</li>
+                                <li>特別な価格での再訪</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🏢</div>
+                            <h4>企業にとって</h4>
+                            <ul>
+                                <li>長期的な社員エンゲージメント</li>
+                                <li>企業文化の継承</li>
+                                <li>世代を超えた福利厚生</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">✈️</div>
+                            <h4>旅行会社にとって</h4>
+                            <ul>
+                                <li>20年間の顧客関係構築</li>
+                                <li>安定した収益基盤</li>
+                                <li>口コミ効果の最大化</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="commitment-section">
+                    <h3>私たちの約束</h3>
+                    <div class="commitment-content">
+                        <div class="commitment-item">
+                            <div class="commitment-icon">📝</div>
+                            <div class="commitment-text">
+                                <h4>記録の保存</h4>
+                                <p>新婚旅行の詳細を20年間保存し、セカンドハネムーンで活用</p>
+                            </div>
+                        </div>
+                        
+                        <div class="commitment-item">
+                            <div class="commitment-icon">💰</div>
+                            <div class="commitment-text">
+                                <h4>特別価格の提供</h4>
+                                <p>20年後の再訪時には特別な価格でプランを提供</p>
+                            </div>
+                        </div>
+                        
+                        <div class="commitment-item">
+                            <div class="commitment-icon">🎁</div>
+                            <div class="commitment-text">
+                                <h4>特別サービスの提供</h4>
+                                <p>同じホテル、同じ場所での特別なサービスを提供</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

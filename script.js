@@ -17,6 +17,7 @@ function initializeApp() {
     setupFormValidation();
     setupModalHandlers();
     setupSmoothScrolling();
+    setupCoupleScheduling();
     
     // デフォルトで新婚旅行プランを表示
     selectMainPlan('honeymoon');
@@ -610,6 +611,134 @@ function updateSecondHoneymoonWellnessPrice() {
     const activeButton = document.querySelector('[onclick*="second-honeymoon-wellness"][data-price-type].active');
     const priceType = activeButton ? activeButton.getAttribute('data-price-type') : 'company';
     updatePlanPrice('second-honeymoon-wellness', priceType);
+}
+
+// 夫婦日程調整機能
+function setupCoupleScheduling() {
+    const form = document.getElementById('couple-scheduling-form');
+    if (form) {
+        form.addEventListener('submit', handleCoupleSchedulingSubmit);
+    }
+}
+
+function handleCoupleSchedulingSubmit(e) {
+    e.preventDefault();
+    
+    const formData = {
+        partner1Name: document.getElementById('partner1-name').value,
+        partner1Company: document.getElementById('partner1-company').value,
+        partner2Name: document.getElementById('partner2-name').value,
+        partner2Company: document.getElementById('partner2-company').value,
+        preferredDates: document.getElementById('preferred-dates').value,
+        vacationDays: document.getElementById('vacation-days').value,
+        specialRequests: document.getElementById('special-requests').value
+    };
+    
+    // 企業間日程調整のシミュレーション
+    const schedulingResult = simulateCompanyScheduling(formData);
+    
+    // 結果を表示
+    showSchedulingResult(schedulingResult);
+}
+
+function simulateCompanyScheduling(formData) {
+    // 実際の実装では、企業の休暇制度データベースと連携
+    const companies = [
+        { name: formData.partner1Company, vacationPolicy: 'standard' },
+        { name: formData.partner2Company, vacationPolicy: 'flexible' }
+    ];
+    
+    // 最適な日程を計算（簡易版）
+    const optimalDates = calculateOptimalDates(formData.preferredDates, formData.vacationDays);
+    
+    return {
+        success: true,
+        optimalDates: optimalDates,
+        companySupport: calculateCompanySupport(companies),
+        estimatedSavings: calculateEstimatedSavings(companies),
+        nextSteps: [
+            '両社の人事部との日程調整を開始',
+            '福利厚生制度の詳細確認',
+            '統合プランの提案書作成',
+            '最終日程の確定'
+        ]
+    };
+}
+
+function calculateOptimalDates(preferredDates, vacationDays) {
+    // 簡易的な日程計算
+    const baseDate = new Date(preferredDates);
+    const vacationLength = parseInt(vacationDays);
+    
+    return {
+        startDate: baseDate.toLocaleDateString('ja-JP'),
+        endDate: new Date(baseDate.getTime() + (vacationLength - 1) * 24 * 60 * 60 * 1000).toLocaleDateString('ja-JP'),
+        duration: vacationLength + '日間'
+    };
+}
+
+function calculateCompanySupport(companies) {
+    return {
+        partner1Support: '¥150,000〜200,000',
+        partner2Support: '¥120,000〜180,000',
+        totalSupport: '¥270,000〜380,000'
+    };
+}
+
+function calculateEstimatedSavings(companies) {
+    return '¥400,000〜500,000';
+}
+
+function showSchedulingResult(result) {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>企業間日程調整結果</h3>
+                <span class="close" onclick="this.parentElement.parentElement.parentElement.remove()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="scheduling-result">
+                    <div class="result-section">
+                        <h4>📅 最適な日程</h4>
+                        <p><strong>出発日:</strong> ${result.optimalDates.startDate}</p>
+                        <p><strong>帰国日:</strong> ${result.optimalDates.endDate}</p>
+                        <p><strong>期間:</strong> ${result.optimalDates.duration}</p>
+                    </div>
+                    
+                    <div class="result-section">
+                        <h4>💰 企業支援額</h4>
+                        <p><strong>1人目の会社支援:</strong> ${result.companySupport.partner1Support}</p>
+                        <p><strong>2人目の会社支援:</strong> ${result.companySupport.partner2Support}</p>
+                        <p><strong>合計支援額:</strong> ${result.companySupport.totalSupport}</p>
+                    </div>
+                    
+                    <div class="result-section">
+                        <h4>💎 予想節約額</h4>
+                        <p><strong>通常価格との差額:</strong> ${result.estimatedSavings}</p>
+                    </div>
+                    
+                    <div class="result-section">
+                        <h4>📋 次のステップ</h4>
+                        <ul>
+                            ${result.nextSteps.map(step => `<li>${step}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button class="btn btn-primary" onclick="this.parentElement.parentElement.parentElement.parentElement.remove()">
+                            <i class="fas fa-check"></i>
+                            了解しました
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    modal.style.display = 'block';
 }
 
 // 後方互換性のための関数
